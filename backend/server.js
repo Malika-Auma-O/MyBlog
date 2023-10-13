@@ -16,6 +16,12 @@ app.use(
     })
   )
 
+  const userAuthRouter = require("./routers/userAuthRouter");
+  const blogRouter = require("./routers/blogRouter");
+
+  app.use("/api/auth", userAuthRouter);
+  app.use("/api", blogRouter);
+
   app.use((error, req, res, next) => {
     res.status(500).json({ error: error.message });
   });
