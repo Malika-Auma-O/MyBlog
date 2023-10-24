@@ -4,6 +4,7 @@ import Hero from "../images/blogHero1.avif"
 import HomeAbout from './HomeAbout';
 import HomeFeatures from './HomeFeatures';
 import '../index.css'
+import Footer from './Footer';
 
 function Home() {
 
@@ -17,13 +18,14 @@ function Home() {
         <Card.Title  className='text-white display-1 customBolderText'  >
           Helpful Notes and Thoughts, Learning Coding.
         </Card.Title>
-        <Button  variant="success">All Blogs</Button>
+        <Button  variant="success">All Blog Posts</Button>
       </Card.ImgOverlay>
     </Card>
     <br></br>
     <HomeAbout/>
     <br></br>
     <HomeFeatures/>
+    <Footer/>
     </div>
     
   );

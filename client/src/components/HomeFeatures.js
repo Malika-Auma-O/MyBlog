@@ -2,11 +2,13 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import Image2 from "../images/sleepRepeat.avif"
 
 function HomeFeatures() {
   return (
     <Container className="my-5">
+        <h2 className="display-5 text-center customBoldText m-4">Featured Blogs: Recently Added</h2>
       <Row xs={1} md={3} className="g-4">
       {Array.from({ length: 3 }).map((_, idx) => (
         <Col key={idx}>
@@ -26,6 +28,11 @@ function HomeFeatures() {
         </Col>
       ))}
     </Row>
+   <br></br>
+    <div className="d-grid gap-2">
+      <Button  variant="success" size="lg">View All Blog Posts</Button>
+    </div>
+    
     </Container>
   );
 }
