@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.customBolderText  {
+  font-weight: 800 !important; 
+}
+
+.customBoldText {
+  font-weight: 600 !important; 
+}
