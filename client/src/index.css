@@ -12,3 +12,11 @@
 .customBoldText {
   font-weight: 600 !important; 
 }
+
+.profile-image {
+  width: 100px;
+}
+
+.profile-card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px !important;
+}

@@ -40,7 +40,7 @@ function Footer() {
         <Row className="d-flex justify-content-center">
           <Col lg={8}>
             <p>
-            CMD_MALIKA is a web development blog that offers insights and experiences from my journey in the world of web development. Explore the coding world through my perspective and learn as I do.
+            CMD_BLOG is a web development blog that offers insights and experiences from my journey in the world of web development. Explore the coding world through my perspective and learn as I do.
             </p>
           </Col>
         </Row>
@@ -70,7 +70,7 @@ function Footer() {
 
       <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
         © 2023 Copyright:
-        <a className="text-white" href="/home"> Malikaomwayi.com</a>
+        <a className="text-white" href="/home"> cmd_blog.com</a>
       </div>
     </footer>
   );

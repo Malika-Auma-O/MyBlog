@@ -1,7 +1,7 @@
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import fofo from "../images/blog404.avif"
-import Footer from './Footer';
+// import Footer from './Footer';
 
 function NotFound() {
   return (

@@ -20,7 +20,7 @@ function HomeAbout() {
         <Col >
           <Card className='border-0'>
             <Card.Body>
-              <Card.Title>My name is Malika Omwayi</Card.Title>
+              <Card.Title>Hey 👋, I'm Malika Omwayi</Card.Title>
               <Card.Text>
               Hello there! I'm a recent graduate with a certification in Full Stack Development, specializing in the MERN stack. I'm enthusiastic about my newfound skills.
               </Card.Text>
