@@ -20,14 +20,14 @@ function ProfileCard() {
                 <h6>
                   <small className="text-secondary">Full Stack Web Developer</small>
                 </h6>
-                <p className="text-muted">
+                {/* <p className="text-muted">
                   @Founder <span>| </span>
                   <span>
                     <a href="#n" >
                       cmd_blog.com
                     </a>
                   </span>
-                </p>
+                </p> */}
               </div>
               <ListGroup className="social-links list-group-horizontal d-flex justify-content-center">
                 <ListGroup.Item className="list-group-item rounded-circle m-1 p-2 border border-3">
@@ -48,7 +48,7 @@ function ProfileCard() {
               </ListGroup>
               <Button
                 type="button"
-                className="btn btn-success mt-3 btn-rounded "
+                className="btn btn-primary btn-rounded "
               >
                 Contact Me
               </Button>

@@ -30,7 +30,7 @@ function HomeFeatures() {
     </Row>
    <br></br>
     <div className="d-grid gap-2">
-      <Button  variant="success" size="lg">View All Blog Posts</Button>
+      <Button  variant="primary" size="lg">View All Blog Posts</Button>
     </div>
     
     </Container>

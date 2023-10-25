@@ -18,7 +18,7 @@ function Home() {
         <Card.Title  className='text-white display-1 customBolderText'  >
           Helpful Notes and Thoughts, Learning Coding.
         </Card.Title>
-        <Button  variant="success">All Blog Posts</Button>
+        <Button  variant="primary">All Blog Posts</Button>
       </Card.ImgOverlay>
     </Card>
     <br></br>

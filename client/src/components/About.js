@@ -13,7 +13,7 @@ function About() {
   return (
     <div>
         <Container>
-            <h1 className="text-center text-success">About Me</h1>
+            <h1 className="text-center ">About Me</h1>
         <Row xs={1} md={2} className="g-4 m-5">
             <Col >
             <Card className='profile-card'>

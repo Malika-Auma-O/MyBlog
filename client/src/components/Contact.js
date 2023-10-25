@@ -43,7 +43,7 @@ function Contact() {
                         <Form.Control as="textarea" rows={3} placeholder="Your questions..." />
                     </Form.Group>
                     <div className="d-grid gap-2">
-                        <Button  variant="success" >SEND MESSAGE</Button>
+                        <Button  variant="primary" >SEND MESSAGE</Button>
                     </div>
                     </Form>
                 </Col>

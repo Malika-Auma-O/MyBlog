@@ -14,7 +14,7 @@ function NavbarPage() {
 
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar  collapseOnSelect expand="lg" className=" bg-body-tertiary p-4 ">
       <Container>
       <Navbar.Brand href="/">
         <Image src={logo} alt="Logo" height="40" />
@@ -23,7 +23,7 @@ function NavbarPage() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/blogs">Blog-Posts</Nav.Link>
+            <Nav.Link href="/posts">Blog-Posts</Nav.Link>
             <Nav.Link href="/about">Portfolio</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
@@ -41,7 +41,7 @@ function NavbarPage() {
               size="sm"
               
             />
-            <Button variant="outline-success" id="search-button">
+            <Button variant="outline-primary" id="search-button">
               <i className="bi bi-search"></i> {/* Magnifying glass icon */}
             </Button>
           </InputGroup>
