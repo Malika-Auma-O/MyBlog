@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
-import logo from "../images/blogLogo1.png"
+import logo from "../images/blogLogo.png"
 
 
 function NavbarPage() {
