@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import envelope from "../images/envelope.png";
-import contact from "../images/contact.jpg"
+import contact from "../images/image.jpg"
 import Footer from "./Footer"
 
 
@@ -21,7 +21,9 @@ function Contact() {
                 <Card.Img  variant="bottom" src={contact} />
            </Card>
         <Container>
-            
+            <br></br>
+            <h4>Email: mamajedeia@gmail.com</h4>
+           
             <Row xs={1} md={2} className="g-4 m-5">
                 <Col className=" my-5">
                 <Card className='border-0'>

@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Hero from "../images/blogHero1.avif"
+import Hero from "../images/Hero.mp4"
 import HomeAbout from './HomeAbout';
 import HomeFeatures from './HomeFeatures';
 import '../index.css'
@@ -12,11 +12,17 @@ function Home() {
   return (
     <div>
         <Card className=" bg-dark text-white border-0 rounded-0">
-      <Card.Img src={Hero} alt="Card image" />
+        <video autoPlay  muted>
+        <source src={Hero} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <Card.ImgOverlay>
         <Card.Title  className="display-6 customBoldText">My Coding Journey</Card.Title>
-        <Card.Title  className='text-white display-1 customBolderText'  >
-          Helpful Notes and Thoughts, Learning Coding.
+        <Card.Title  className='text-white display-1 customBolderText '  >
+          Notes,
+        </Card.Title>
+        <Card.Title  className='text-white display-1 customBolderText '  >
+          and Thoughts.
         </Card.Title>
         <Button  variant="primary">All Blog Posts</Button>
       </Card.ImgOverlay>
