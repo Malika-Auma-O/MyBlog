@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
-import code from "../images/sleepRepeat.avif"
+import code from "../images/code.jpg"
 import ProfileCard from './ProfileCard';
 import Footer from './Footer';
 
@@ -15,20 +15,21 @@ function About() {
         <Container>
             <h1 className="text-center ">About Me</h1>
         <Row xs={1} md={2} className="g-4 m-5">
-            <Col >
-            <Card className='profile-card'>
+            <Col className='h-100'>
+            <Card className='profile-card  h-100'>
                 <Card.Img  src={code} />              
             </Card>
             </Col>
-            <Col>
+            <Col className='h-100 '>
             <ProfileCard/>
             </Col>
         </Row>
         </Container>
+        <br></br>
         <Container className=' m-5'>
             <Accordion>
             <Accordion.Item eventKey="0">
-            <Accordion.Header  >What is this blog about?</Accordion.Header>
+            <Accordion.Header  >What is this website about?</Accordion.Header>
                 <Accordion.Body>
                 This website is my personal space to document my coding journey. It's where I share my notes, thoughts, and experiences as I continue to learn and grow as a developer. I believe in the power of knowledge sharing and aim to provide valuable insights for fellow learners and enthusiasts.
                 I'm a firm believer in the value of learning and teaching. While I'm no expert, I'm passionate about helping others navigate the complex "getting started" phase of their coding journey, just as I have.

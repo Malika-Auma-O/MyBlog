@@ -4,9 +4,9 @@ import profile from "../images/profile.jpg"
 
 function ProfileCard() {
   return ( 
-    <Container className="border-0 profile-card">
+    <Container className="border-0 profile-card h-100">
       
-          <Card className="text-center card-box border-0">
+          <Card className="text-center card-box border-0 h-100">
             <div className=" pt-2 pb-2">
               <div className="">
                 <Image
@@ -20,14 +20,14 @@ function ProfileCard() {
                 <h6>
                   <small className="text-secondary">Full Stack Web Developer</small>
                 </h6>
-                {/* <p className="text-muted">
+                <p className="text-muted">
                   @Founder <span>| </span>
                   <span>
                     <a href="#n" >
-                      cmd_blog.com
+                      malikaomwayi.com
                     </a>
                   </span>
-                </p> */}
+                </p>
               </div>
               <ListGroup className="social-links list-group-horizontal d-flex justify-content-center">
                 <ListGroup.Item className="list-group-item rounded-circle m-1 p-2 border border-3">
@@ -48,7 +48,7 @@ function ProfileCard() {
               </ListGroup>
               <Button
                 type="button"
-                className="btn btn-primary btn-rounded "
+                className="btn btn-primary btn-rounded my-2 "
               >
                 Contact Me
               </Button>

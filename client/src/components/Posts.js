@@ -8,12 +8,12 @@ import Footer from './Footer';
 function Posts() {
   return (
     <div>
-        <Container>
+        <Container >
             <h1 className="text-center">All Blog Posts</h1>
         <Row xs={1} md={2} lg={3} className="g-4">
             {Array.from({ length: 8 }).map((_, idx) => (
                 <Col key={idx}>
-                <Card>
+                <Card className='h-100 p-4'>
                     <Card.Img variant="top" src={Image2} />
                     <Card.Body>
                         <Card.Title >Card title</Card.Title>

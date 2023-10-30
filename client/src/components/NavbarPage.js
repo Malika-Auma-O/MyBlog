@@ -6,7 +6,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
-import logo from "../images/logo.png"
+// import logo from "../images/logo.png"
+import logo from "../images/design2.gif"
 
 
 function NavbarPage() {
@@ -14,17 +15,17 @@ function NavbarPage() {
 
 
   return (
-    <Navbar  collapseOnSelect expand="lg" className=" bg-body-tertiary ">
-      <Container>
+    <Navbar  collapseOnSelect expand="lg" className=" bg-body-tertiary " >
+      <Container >
       <Navbar.Brand href="/">
-        <Image src={logo} alt="Logo" height="60" />
+        <Image src={logo} alt="Logo" height="45" />
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/posts">Blog-Posts</Nav.Link>
-            <Nav.Link href="/about">Portfolio</Nav.Link>
+            <Nav.Link href="/portfolio">Portfolio</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
           </Nav>

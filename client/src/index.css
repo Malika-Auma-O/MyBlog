@@ -2,7 +2,17 @@
   box-sizing: border-box !important;
   text-decoration: none !important;
   list-style: none !important;
+  font-family: 'Jost', sans-serif !important;
 
+}
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+  font-family: 'Jost', sans-serif !important;
+  background-color: #e2e1fe !important;
 }
 
 .customBolderText  {
@@ -17,9 +27,9 @@
   width: 100px;
 }
 
-.profile-card {
+/* .profile-card {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px !important;
-}
+} */
 
 .envelope {
   width: 300px !important;
@@ -30,3 +40,13 @@
   height: 200px;
 }
 
+.card-link{
+max-width: fit-content;
+ margin: auto !important;
+}
+
+.card-img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
