@@ -13,8 +13,8 @@ function Posts() {
         <Row xs={1} md={2} lg={3} className="g-4">
             {Array.from({ length: 8 }).map((_, idx) => (
                 <Col key={idx}>
-                <Card className='h-100 p-4'>
-                    <Card.Img variant="top" src={Image2} />
+                <Card className='h-100 p-4 '>
+                    <Card.Img className='card-img rounded' variant="top" src={Image2} />
                     <Card.Body>
                         <Card.Title >Card title</Card.Title>
                         <Card.Text>Author: <span className="text-secondary">Malika <span className="ms-3">Site Owner</span></span></Card.Text>
@@ -23,6 +23,7 @@ function Posts() {
                             lead-in to additional content. This content is a little bit
                             longer.
                         </Card.Text>
+                        <Card.Text className="text-secondary">Date added</Card.Text>
                         <Card.Link href="#">Read More</Card.Link>
                         </Card.Body>
                 </Card>

@@ -31,6 +31,14 @@ body {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px !important;
 } */
 
+.navbar-custom {
+  color: #000B73 !important; 
+}
+
+.navbar-custom:hover {
+  color: #0d6efd !important;
+}
+
 .envelope {
   width: 300px !important;
  

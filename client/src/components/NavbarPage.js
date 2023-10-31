@@ -6,48 +6,41 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
-// import logo from "../images/logo.png"
-import logo from "../images/design2.gif"
-
+import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
+import logo from "../images/design2.gif"; // Change to your logo path
 
 function NavbarPage() {
-
-
+  const location = useLocation();
 
   return (
-    <Navbar  collapseOnSelect expand="lg" className=" bg-body-tertiary " >
-      <Container >
-      <Navbar.Brand href="/">
-        <Image src={logo} alt="Logo" height="45" />
-      </Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          <Image src={logo} alt="Logo" height="45" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/posts">Blog-Posts</Nav.Link>
-            <Nav.Link href="/portfolio">Portfolio</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+          <Nav.Link href="/" className='navbar-custom'>Home</Nav.Link>
+            <Nav.Link as={Link} to="/posts" className={`navbar-custom ${location.pathname === '/posts' ? 'text-primary' : ''}`}>Blog-Posts</Nav.Link>
+            <Nav.Link as={Link} to="/portfolio" className={`navbar-custom ${location.pathname === '/portfolio' ? 'text-primary' : ''}`}>Portfolio</Nav.Link>
+            <Nav.Link as={Link} to="/about" className={`navbar-custom ${location.pathname === '/about' ? 'text-primary' : ''}`}>About</Nav.Link>
+            <Nav.Link as={Link} to="/contact" className={`navbar-custom ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
           </Nav>
-          
         </Navbar.Collapse>
-        <Nav>
-        <Form
-         className="d-flex">
+        <Form className="d-flex">
           <InputGroup>
             <FormControl
               type="search"
               placeholder="Search"
               aria-label="Search"
               size="sm"
-              
             />
             <Button variant="outline-primary" id="search-button">
               <i className="bi bi-search"></i> {/* Magnifying glass icon */}
             </Button>
           </InputGroup>
         </Form>
-      </Nav>
       </Container>
     </Navbar>
   );
