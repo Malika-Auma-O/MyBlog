@@ -11,9 +11,9 @@ import Footer from './Footer';
 
 function About() {
   return (
-    <div>
-        <Container>
-            <h1 className="text-center ">About Me</h1>
+    <div className='background'>
+        <Container >
+            <h1 className="text-center text-white">About Me</h1>
         <Row xs={1} md={2} className="g-4 m-5">
             <Col className='h-100 '>
             <Card className='profile-card  h-100'>

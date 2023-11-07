@@ -3,13 +3,18 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Image2 from "../images/sleepRepeat.avif";
+import post from "../images/post.jpg";
 import Footer from './Footer';
 
 function Posts() {
   return (
     <div>
-        <Container >
+        <Card>
+            <Card.Img className='border-0 rounded-0' variant="top" src={post} />
+            </Card>
+        <Container className='mt-5'>
             <h1 className="text-center">All Blog Posts</h1>
+            
         <Row xs={1} md={2} lg={3} className="g-4">
             {Array.from({ length: 8 }).map((_, idx) => (
                 <Col key={idx}>

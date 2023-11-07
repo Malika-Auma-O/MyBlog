@@ -58,3 +58,9 @@ max-width: fit-content;
   width: 100% !important;
   height: 100% !important;
 }
+
+.background {
+  background-image: url("./images/globe.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -6,8 +6,10 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import ListGroup from "react-bootstrap/ListGroup";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import blog from "../images/sleepRepeat.avif";
-import resume from "../images/resume.png"
+import mern from "../images/mern.jpg"
 import Footer from "./Footer"
 
 function Portfolio() {
@@ -40,17 +42,43 @@ function Portfolio() {
     
   return (
     <div>
+        <Card>
+            <Card.Img className='border-0 rounded-0 ' variant="top" src={mern} />
+            </Card>
       <Container className="p-5">
-        <h1 className="text-center mt-3">Portfolio</h1>        
+        {/* <h1 className="text-center mt-3">Portfolio</h1>         */}
         <Container >
             <Row>
                 <Col  >
-                <h5 className='mb-4'>My Resume:</h5>
-                <Card  style={{ width: '17rem' }}>
-                <Card.Img  variant="top" src={resume} />
-                </Card>
+                <h5 className='mb-4'>Tools:</h5>
+                <ListGroup variant="flush">
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-brands fa-git-alt" size='xl' style={{color: "#001b6b",}}  /> Git
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-regular fa-window-maximize" size='xl' style={{color: "#001b6b",}} /> Postman
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-brands fa-accusoft" size='xl' style={{color: "#001b6b",}} /> Visual Studio Code
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-brands fa-github" size='xl' style={{color: "#001b6b",}} /> GitHub
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-brands fa-trello" size='xl' style={{color: "#001b6b",}} /> Trello
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon  icon="fa-brands fa-npm" size='xl' style={{color: "#001b6b",}} /> npm
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-brands fa-envira" rotation={90} size='xl' style={{color: "#001b6b",}} /> MongoDB
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                    <FontAwesomeIcon icon="fa-solid fa-gear" size='xl' style={{color: "#001b6b",}}/> REST API
+                    </ListGroup.Item>
+                </ListGroup>
                 <br></br>
-                <Card.Link href="https://tan-katee-6.tiiny.site/" target="_blank">View my resume in pdf form.</Card.Link>          
+                <Card.Link href="https://tan-katee-6.tiiny.site/" target="_blank">Click to view my resume in pdf format.</Card.Link>          
                 </Col>
                 <Col>
                 <h5 className='mb-3'>Languages I speak:</h5>
