@@ -3,15 +3,20 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Image2 from "../images/sleepRepeat.avif";
-import post from "../images/post.jpg";
+import post from "../images/programming.jpg";
 import Footer from './Footer';
 
 function Posts() {
   return (
     <div>
         <Card>
-            <Card.Img className='border-0 rounded-0' variant="top" src={post} />
-            </Card>
+            <Card.Img className='border-0 rounded-0' src={post} />
+            <div className="overlay"></div>
+            <Card.ImgOverlay className='fade-in-animation '>
+                <Card.Title className='display-3 text-center text-white m- customBoldText '>First solve the problem,</Card.Title>
+                <Card.Title className='display-3 text-center text-white m- customBoldText '>Then write the code.</Card.Title>
+            </Card.ImgOverlay>
+        </Card>
         <Container className='mt-5'>
             <h1 className="text-center">All Blog Posts</h1>
             

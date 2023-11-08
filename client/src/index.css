@@ -60,7 +60,56 @@ max-width: fit-content;
 }
 
 .background {
-  background-image: url("./images/globe.jpg");
+  background-image: url("./images/backs.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 74, 0.751); 
+}
+
+.fade-in-animation {
+  animation: fade-in 7s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.slide-in-fade-in-animation {
+  animation: slide-in 1.5s ease-in-out, fade-in 1.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0); 
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0; 
+  }
+  to {
+    opacity: 1; 
+  }
+}
+

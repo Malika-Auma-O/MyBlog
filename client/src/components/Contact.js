@@ -5,21 +5,20 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import envelope from "../images/envelope.png";
-import contact from "../images/image.jpg"
+import contact from "../images/touch.png"
 import Footer from "./Footer"
 
 
 function Contact() {
   return (
     <div>
-        <Card className='border-0'>
-                <Card.Body>
-                <Card.Title className='display-3 text-center customBoldText '>
-                    Get In Touch
-                </Card.Title>
-                </Card.Body>
-                <Card.Img  variant="bottom" src={contact} />
-           </Card>
+        <Card className="bg-dark text-white border-0 rounded-0">
+            <Card.Img src={contact} />
+            <div className="overlay"></div>
+            <Card.ImgOverlay>
+                <Card.Title className='display-3 text-center customBoldText fade-in-animation'>Get In Touch</Card.Title>
+            </Card.ImgOverlay>
+            </Card>
         <Container>
             <br></br>
             <h4>Email: mamajedeia@gmail.com</h4>

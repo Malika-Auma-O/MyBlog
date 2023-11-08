@@ -17,14 +17,14 @@ function Home() {
         Your browser does not support the video tag.
       </video>
       <Card.ImgOverlay>
-        <Card.Title  className="display-6 customBoldText">My Coding Journey</Card.Title>
-        <Card.Title  className='text-white display-1 customBolderText '  >
+        <Card.Title  className="display-6 customBoldText slide-in-fade-in-animation">My Coding Journey</Card.Title>
+        <Card.Title  className='text-white display-1 customBolderText slide-in-fade-in-animation'  >
           Notes,
         </Card.Title>
-        <Card.Title  className='text-white display-1 customBolderText '  >
+        <Card.Title  className='text-white display-1 customBolderText slide-in-fade-in-animation'  >
           and Thoughts.
         </Card.Title>
-        <Button  variant="primary">All Blog Posts</Button>
+        <Button className='slide-in-fade-in-animation'  variant="primary">All Blog Posts</Button>
       </Card.ImgOverlay>
     </Card>
     <br></br>

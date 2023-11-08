@@ -43,10 +43,13 @@ function Portfolio() {
   return (
     <div>
         <Card>
-            <Card.Img className='border-0 rounded-0 ' variant="top" src={mern} />
-            </Card>
+          <Card.Img className='border-0 rounded-0 ' variant="top" src={mern} />
+          <div className="overlay"></div>
+          <Card.ImgOverlay>
+                <Card.Title className='display-3 text-center customBoldText text-white fade-in-animation'>Portfolio</Card.Title>
+            </Card.ImgOverlay>
+        </Card>
       <Container className="p-5">
-        {/* <h1 className="text-center mt-3">Portfolio</h1>         */}
         <Container >
             <Row>
                 <Col  >
@@ -90,9 +93,10 @@ function Portfolio() {
                         <span>{language.percentage}%</span>
                     </div>
                     <ProgressBar animated
-                        now={animationComplete ? language.percentage : 0}
-                        transition={animationComplete ? false : true}
+                      now={animationComplete ? language.percentage : 0}
+                      transition={animationComplete ? "false" : "true"}
                     />
+
                     </div>
                 ))}
                 </div>
