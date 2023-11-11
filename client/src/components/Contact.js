@@ -21,7 +21,6 @@ function Contact() {
             </Card>
         <Container>
             <br></br>
-            <h4>Email: mamajedeia@gmail.com</h4>
            
             <Row xs={1} md={2} className="g-4 m-5">
                 <Col className=" my-5">

@@ -1,8 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
 
-function MyVerticallyCenteredModal(props) {
+function PortfolioModal(props) {
   return (
     <Modal
       {...props}
@@ -27,23 +26,6 @@ function MyVerticallyCenteredModal(props) {
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-  );
-}
-
-function PortfolioModal() {
-  const [modalShow, setModalShow] = useState(false);
-
-  return (
-    <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </>
   );
 }
 

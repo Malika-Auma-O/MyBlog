@@ -9,10 +9,12 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import blog from "../images/sleepRepeat.avif";
-import mern from "../images/mern.jpg"
-import Footer from "./Footer"
+import mern from "../images/mern.jpg";
+import PortfolioModal from './PortfolioModal';
+import Footer from "./Footer";
 
 function Portfolio() {
+  const [modalShow, setModalShow] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
     const [activeKey, setActiveKey] = useState("1");
     const handleSelect = (eventKey) => {
@@ -152,17 +154,21 @@ function Portfolio() {
                 <Row>
                   <Col xs={12} md={6}>
                     <Card.Body>
-                      <Button className=" my-4 bg-color">Card title</Button>
+                      <Button className="my-4 bg-color" onClick={() => setModalShow(true)}>
+                        Card title
+                      </Button>
                       <Card.Title>
                         This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                       </Card.Title>
-                      <Card.Subtitle className=" mt-4 text-muted">Date Created</Card.Subtitle>
+                      <Card.Subtitle className="mt-4 text-muted">Date Created</Card.Subtitle>
                     </Card.Body>
                   </Col>
                   <Col xs={12} md={6}>
                     <div className="image-container">
-                    <Card.Img variant="top" src={blog} className="card-img rounded" />
-                  </div>
+                      <Card.Img 
+                      onClick={() => setModalShow(true)}
+                      variant="top" src={blog} className="card-img rounded" />
+                    </div>
                   </Col>
                 </Row>
               </Card>
@@ -170,6 +176,10 @@ function Portfolio() {
           ))}
         </Row>
       </Container>
+      <PortfolioModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <Footer/>
     </div>
   );
