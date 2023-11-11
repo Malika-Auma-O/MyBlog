@@ -70,6 +70,7 @@ const login = async(req, res) =>{
       };
       
       // Generate the JWT from the generateToken.js in utils
+      // const token = generateToken(payload, "1h");
       const token = generateToken(payload);
 
        // Send the token back to the client
@@ -98,6 +99,8 @@ const verify = async(req, res) =>{
         // console.log(user)
 
         // Generate a new token with updated user information
+        // const newToken = generateToken({ userId: user._id, username: user.username}, "1h");
+      // console.log(newToken)
       const newToken = generateToken({ userId: user._id, username: user.username});
 
         // Send the user data and the new token back to the client

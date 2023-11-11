@@ -7,6 +7,7 @@ const BlogSchema = new mongoose.Schema( {
     category: { type: String, required: false },
     image: { type: String, required: false },
     imagePublicId: { type: String, required: false },
+    userId: {type: String},
 }, {timestamps: true});
 
 const Blog = mongoose.model("Blog", BlogSchema);

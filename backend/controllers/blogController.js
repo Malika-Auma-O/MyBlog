@@ -5,7 +5,7 @@ const uploadBlogImage = blogImageParser.single("image");
 
 const createBlog = async (req, res) => {
   try {
-    const userId = req.user.userId;
+    const userId = req.user.user.id;
 
     // handle image upload
     uploadBlogImage(req, res, async(err) => {
@@ -29,7 +29,6 @@ const createBlog = async (req, res) => {
         image: req.body.image,
         imagePublicId : req.body.imagePublicId,
       }
-
       const newBlog = await Blog.create(blog);
       res.status(201).send({ msg: "Blog created successfully", newBlog });
     })
@@ -51,7 +50,7 @@ const getAllBlogs = async (req, res) => {
 const getAllUserBlogs = async (req, res) => {
   try {
     // Find all blogs based on their user ID
-    const userBlogs = await Blog.find({ userId: req.user.userId })
+    const userBlogs = await Blog.find({ userId: req.user.user.id })
     res.send(userBlogs)
   } catch (error) {
     res.status(401).send({ msg:"Unauthorized access", error})
@@ -61,7 +60,7 @@ const getAllUserBlogs = async (req, res) => {
 const updateBlog = async (req, res) => {
   try {
     // Set the user ID from the authentication token
-    const userId = req.user.userId;
+    const userId = req.user.user.id;
 
     // Check if the blog exists
     const blogId = req.params.id;
@@ -72,7 +71,7 @@ const updateBlog = async (req, res) => {
     }
 
     // Check if the user is the owner of the blog
-    if (existingBlog.userId !== userId && !admin) {
+    if (existingBlog.userId !== userId) {
       return res.status(403).send({ msg: "You are not authorized to update this Blog" });
     }
 
@@ -109,8 +108,9 @@ const updateBlog = async (req, res) => {
 
 const deleteBlog = async (req, res) => {
   try {
+
     const blog = await Blog.findById(req.params.id);
-    if (blog.userId !== req.user.userId) {
+    if (blog.userId !== req.user.user.id) {
       return res.status(403).send({ msg: "Unauthorized to delete this blog" });
     }else {
       await Blog.findByIdAndDelete({ _id: req.params.id });
