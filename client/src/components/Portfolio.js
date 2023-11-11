@@ -160,7 +160,9 @@ function Portfolio() {
                     </Card.Body>
                   </Col>
                   <Col xs={12} md={6}>
-                    <Card.Img  variant="top" src={blog} className="card-img rounded" />
+                    <div className="image-container">
+                    <Card.Img variant="top" src={blog} className="card-img rounded" />
+                  </div>
                   </Col>
                 </Row>
               </Card>

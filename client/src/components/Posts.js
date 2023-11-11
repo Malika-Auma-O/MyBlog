@@ -24,7 +24,10 @@ function Posts() {
             {Array.from({ length: 8 }).map((_, idx) => (
                 <Col key={idx}>
                 <Card className='h-100 p-4 '>
-                    <Card.Img className='card-img rounded' variant="top" src={Image2} />
+                <div className="image-container">
+                <Card.Img className='card-img rounded' variant="top" src={Image2} />
+                </div>
+                    
                     <Card.Body>
                         <Card.Title >Card title</Card.Title>
                         <Card.Text>Author: <span className="text-secondary">Malika <span className="ms-3">Site Owner</span></span></Card.Text>

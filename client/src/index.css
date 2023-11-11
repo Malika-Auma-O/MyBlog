@@ -88,6 +88,20 @@ max-width: fit-content;
   height: 100% !important;
 }
 
+.image-container {
+  perspective: 1000px !important;
+}
+
+.image-container:hover .card-img {
+  transform: translateZ(50px) !important;
+  transition: transform 0.5s !important;
+}
+
+.card-img {
+  transition: transform 0.2s !important;
+}
+
+
 .background {
   background-image: url("./images/backs.png");
   background-repeat: no-repeat;
