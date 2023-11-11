@@ -7,12 +7,12 @@ import Image1 from "../images/scriptsCode.png"
 function HomeAbout() {
   return (
     <Container className='mt-5 mb-5'>
-        <h2 className="display-5 text-center customBoldText m-4">About Me</h2>
+        <h2 className="display-5 text-center customBoldText m-4 text-color2">About Me</h2>
         <Row xs={1} md={2} className="g-4">
         <Col  >
           <Card  className="border-0 h-100 ">
             <Card.Img variant="top" src={Image1} alt="Coding illustration" className="rounded-circle mx-auto " style={{ width: "20rem" }}  />
-            <Card.Body className='mx-auto'>
+            <Card.Body className='mx-auto '>
               <Card.Link  href="/about">Read More About Me</Card.Link>
             </Card.Body>
           </Card>

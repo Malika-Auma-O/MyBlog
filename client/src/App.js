@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Posts from "./components/Posts";
+import PostDetails from "./components/PostDetails";
 import Portfolio from "./components/Portfolio";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/about" element={<About />}/>
             <Route path="/contact" element={<Contact />}/>
             <Route path="/posts" element={<Posts />}/>
+            <Route path="/post/:slug" element={<PostDetails />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
             <Route path="*" element={<NotFound />} />
           </Routes>

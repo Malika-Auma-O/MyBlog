@@ -8,7 +8,7 @@ import Image2 from "../images/sleepRepeat.avif"
 function HomeFeatures() {
   return (
     <Container className="my-5">
-        <h2 className="display-5 text-center customBoldText m-4">Featured Blogs: Recently Added</h2>
+        <h2 className="display-5 text-center customBoldText m-4 text-color2">Featured Blogs: Recently Added</h2>
       <Row xs={1} md={3} className="g-4">
       {Array.from({ length: 3 }).map((_, idx) => (
         <Col key={idx}>
@@ -30,7 +30,7 @@ function HomeFeatures() {
     </Row>
    <br></br>
     <div className="d-grid gap-2">
-      <Button  variant="primary" size="lg">View All Blog Posts</Button>
+      <Button  className='bg-color' size="lg">View All Blog Posts</Button>
     </div>
     
     </Container>

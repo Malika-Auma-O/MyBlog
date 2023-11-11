@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Button, Card, Image, ListGroup } from "react-bootstrap";
-import profile from "../images/profile.jpg"
 
 function ProfileCard() {
   return ( 
@@ -10,7 +9,7 @@ function ProfileCard() {
             <div className=" pt-2 pb-2">
               <div className="">
                 <Image
-                  src={profile}
+                  src="https://img.freepik.com/free-photo/painting-woman-with-oranges-her-hair_1340-28007.jpg"
                   roundedCircle
                   className="rounded-circle img-thumbnail mb-3 profile-image"
                   alt="profile-image"
@@ -23,7 +22,7 @@ function ProfileCard() {
                 <p className="text-muted">
                   @Founder <span>| </span>
                   <span>
-                    <a href="#n" >
+                    <a className="text-color" href="#n" >
                       malikaomwayi.com
                     </a>
                   </span>
@@ -48,7 +47,7 @@ function ProfileCard() {
               </ListGroup>
               <Button
                 type="button"
-                className="btn btn-primary btn-rounded my-2 "
+                className="btn btn-primary btn-rounded my-2 bg-color"
               >
                 Contact Me
               </Button>

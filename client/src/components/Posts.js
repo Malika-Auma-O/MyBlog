@@ -18,7 +18,7 @@ function Posts() {
             </Card.ImgOverlay>
         </Card>
         <Container className='mt-5'>
-            <h1 className="text-center">All Blog Posts</h1>
+            <h1 className="text-center text-color2">All Blog Posts</h1>
             
         <Row xs={1} md={2} lg={3} className="g-4">
             {Array.from({ length: 8 }).map((_, idx) => (

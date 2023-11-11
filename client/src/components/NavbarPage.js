@@ -21,11 +21,11 @@ function NavbarPage() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link href="/" className='navbar-custom'>Home</Nav.Link>
-            <Nav.Link as={Link} to="/posts" className={`navbar-custom ${location.pathname === '/posts' ? 'text-primary' : ''}`}>Blog-Posts</Nav.Link>
-            <Nav.Link as={Link} to="/portfolio" className={`navbar-custom ${location.pathname === '/portfolio' ? 'text-primary' : ''}`}>Portfolio</Nav.Link>
-            <Nav.Link as={Link} to="/about" className={`navbar-custom ${location.pathname === '/about' ? 'text-primary' : ''}`}>About</Nav.Link>
-            <Nav.Link as={Link} to="/contact" className={`navbar-custom ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
+          <Nav.Link href="/" className='text-color'>Home</Nav.Link>
+            <Nav.Link as={Link} to="/posts" className={`text-color ${location.pathname === '/posts' ? 'text-primary' : ''}`}>Blog-Posts</Nav.Link>
+            <Nav.Link as={Link} to="/portfolio" className={`text-color ${location.pathname === '/portfolio' ? 'text-primary' : ''}`}>Portfolio</Nav.Link>
+            <Nav.Link as={Link} to="/about" className={`text-color ${location.pathname === '/about' ? 'text-primary' : ''}`}>About</Nav.Link>
+            <Nav.Link as={Link} to="/contact" className={`text-color ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Form className="d-flex">

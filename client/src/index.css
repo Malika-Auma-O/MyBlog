@@ -31,12 +31,37 @@ body {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px !important;
 } */
 
-.navbar-custom {
+
+.text-color {
   color: #000B73 !important; 
 }
 
-.navbar-custom:hover {
+.text-color2 {
+  color: #000B73 !important; 
+}
+
+.text-color:hover {
   color: #0d6efd !important;
+}
+
+.bg-color {
+  background-color: #000B73 !important;
+}
+
+.bg-color:hover {
+  background-color: #0d6efd !important;
+}
+
+.active-tab {
+  background-color: #000B73 !important;
+}
+
+.active-tab:hover {
+  background-color: #0d6efd !important;
+}
+
+.inactive-tab {
+  color: #000B73 !important; 
 }
 
 .envelope {
@@ -46,6 +71,10 @@ body {
 
 .contact-image{
   height: 200px;
+}
+
+.small-avatar {
+  width: 60px !important;
 }
 
 .card-link{
@@ -74,8 +103,16 @@ max-width: fit-content;
   background-color: rgba(1, 1, 74, 0.751); 
 }
 
+.underline {
+  border-bottom: 1px solid #000B73 !important;
+}
+
+#footer {
+    padding: 1rem;
+}
+
 .fade-in-animation {
-  animation: fade-in 7s ease-in-out infinite;
+  animation: fade-in 7s ease infinite;
 }
 
 @keyframes fade-in {

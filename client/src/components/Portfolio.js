@@ -53,7 +53,7 @@ function Portfolio() {
         <Container >
             <Row>
                 <Col  >
-                <h5 className='mb-4'>Tools:</h5>
+                <h5 className='mb-4 text-color2'>Tools:</h5>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
                     <FontAwesomeIcon icon="fa-brands fa-git-alt" size='xl' style={{color: "#001b6b",}}  /> Git
@@ -84,7 +84,7 @@ function Portfolio() {
                 <Card.Link href="https://tan-katee-6.tiiny.site/" target="_blank">Click to view my resume in pdf format.</Card.Link>          
                 </Col>
                 <Col>
-                <h5 className='mb-3'>Languages I speak:</h5>
+                <h5 className='mb-3 text-color2'>Languages I speak:</h5>
                 <div>
                 {languages.map((language, index) => (
                     <div key={index} className="mb-3">
@@ -104,36 +104,43 @@ function Portfolio() {
             </Row>
         </Container>
         <br/><hr/><br/>
-        <h2 className="text-center mt-3">My Projects</h2>
+        <h2 className="text-center mt-3 text-color2">My Projects</h2>
         <h5 className="text-center">Here is a selection of projects I have worked on so far. Click on thumbnails to view more information about each project.</h5>
         <Nav variant="pills" activeKey={activeKey} onSelect={handleSelect} className="m-5 justify-content-center">
           <Nav.Item>
-            <Nav.Link eventKey="1" href="#/home">
+            <Nav.Link eventKey="1" href="#/home"
+             className={activeKey === '1' ? 'active-tab' : 'inactive-tab'}>
               ALL
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="2" title="HTML" href="#/html">
+            <Nav.Link eventKey="2" title="HTML" href="#/html"
+            className={activeKey === '2' ? 'active-tab' : 'inactive-tab'}
+            >
               HTML
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="3" title="JavaScript" href="#/javascript">
+            <Nav.Link eventKey="3" title="JavaScript" href="#/javascript"
+            className={activeKey === '3' ? 'active-tab' : 'inactive-tab'}>
               JAVASCRIPT
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="4" title="React" href="#/react">
+            <Nav.Link eventKey="4" title="React" href="#/react"
+            className={activeKey === '4' ? 'active-tab' : 'inactive-tab'}>
               REACT
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="5" title="Angular" href="#/angular">
+            <Nav.Link eventKey="5" title="Angular" href="#/angular"
+            className={activeKey === '5' ? 'active-tab' : 'inactive-tab'}>
               ANGULAR
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="6" title="WordPress" href="#/wordpress">
+            <Nav.Link eventKey="6" title="WordPress" href="#/wordpress"
+            className={activeKey === '6' ? 'active-tab' : 'inactive-tab'}>
               WORDPRESS
             </Nav.Link>
           </Nav.Item>
@@ -145,7 +152,7 @@ function Portfolio() {
                 <Row>
                   <Col xs={12} md={6}>
                     <Card.Body>
-                      <Button className=" my-4">Card title</Button>
+                      <Button className=" my-4 bg-color">Card title</Button>
                       <Card.Title>
                         This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                       </Card.Title>

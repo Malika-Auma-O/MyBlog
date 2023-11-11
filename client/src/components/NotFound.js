@@ -12,7 +12,7 @@ function NotFound() {
         {/* <br></br><br></br> */}
         {/* <h1 className='display-1 customBoldText'>Page not found</h1> */}
         
-        <Button  variant="primary">Go Home</Button>
+        <Button  className='bg-color'>Go Home</Button>
         </div>
         
       </div>

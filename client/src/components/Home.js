@@ -24,7 +24,7 @@ function Home() {
         <Card.Title  className='text-white display-1 customBolderText slide-in-fade-in-animation'  >
           and Thoughts.
         </Card.Title>
-        <Button className='slide-in-fade-in-animation'  variant="primary">All Blog Posts</Button>
+        <Button  className='slide-in-fade-in-animation  text-color' variant="light">All Blog Posts</Button>
       </Card.ImgOverlay>
     </Card>
     <br></br>
