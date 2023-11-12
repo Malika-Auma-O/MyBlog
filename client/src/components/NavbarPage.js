@@ -6,9 +6,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Image from 'react-bootstrap/Image';
-import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
-import logo from "../images/design2.gif"; // Change to your logo path
-
+import { Link, useLocation } from 'react-router-dom'; 
+import logo from "../images/design2.gif";
 function NavbarPage() {
   const location = useLocation();
 
@@ -37,7 +36,7 @@ function NavbarPage() {
               size="sm"
             />
             <Button variant="outline-primary" id="search-button">
-              <i className="bi bi-search"></i> {/* Magnifying glass icon */}
+              <i className="bi bi-search"></i> 
             </Button>
           </InputGroup>
         </Form>

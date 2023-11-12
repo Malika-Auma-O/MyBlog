@@ -1,18 +1,23 @@
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import fofo from "../images/nots.png"
-// import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 function NotFound() {
+  const navigate = useNavigate();
+  const toHome = () => {
+    navigate("/");
+  };
+    
   return (
     <div className="position-relative">
       <Image src={fofo} fluid />
       <div className="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center text-danger ">
         <div>
-        {/* <br></br><br></br> */}
-        {/* <h1 className='display-1 customBoldText'>Page not found</h1> */}
         
-        <Button  className='bg-color'>Go Home</Button>
+        <Button 
+        onClick={toHome}
+         className='bg-color'>Go Home</Button>
         </div>
         
       </div>
