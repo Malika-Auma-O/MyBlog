@@ -14,6 +14,8 @@ import Contact from "./components/Contact";
 import Posts from "./components/Posts";
 import PostDetails from "./components/PostDetails";
 import Portfolio from "./components/Portfolio";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             <Route path="/posts" element={<Posts />}/>
             <Route path="/post/:slug" element={<PostDetails />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
+            <Route path="/register" element={<Register />}/>
+            <Route path="/login" element={<Login />}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
