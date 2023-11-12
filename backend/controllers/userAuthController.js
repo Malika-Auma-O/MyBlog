@@ -26,7 +26,7 @@ const signUp = async(req, res) =>{
       // Create a payload for the JWT
       const payload = {
         user: {
-          id: newUser._id,
+          userId: newUser._id,
           username: newUser.username,
         },
       };

@@ -20,6 +20,17 @@ const blogImageStorage = new CloudinaryStorage({
   },
 });
 
+// Create storage object for blog images
+const projectImageStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "project-images", 
+    format: async (req, file) => "jpeg",
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
+    public_id: (req, file) => `image-${Date.now()}`
+  },
+});
+
 // Create a storage object for user avatars
 const userAvatarStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
@@ -33,9 +44,11 @@ const userAvatarStorage = new CloudinaryStorage({
 
 // Create a multer object for blog and avatar uploads
 const blogImageParser = multer({ storage: blogImageStorage });
+const projectImageParser = multer({ storage: projectImageStorage });
 const userAvatarParser = multer({ storage: userAvatarStorage });
 
 module.exports = { 
   blogImageParser,
+  projectImageParser,
   userAvatarParser,
 };
