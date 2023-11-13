@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Editor from './Editor'; 
 
 function PostForm() {
     const navigate = useNavigate();
@@ -16,28 +17,28 @@ function PostForm() {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+    const [editorVisible, setEditorVisible] = useState(false);
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
     async function createBlog(event) {
         event.preventDefault();
         let newBlog = {
-          title: title,
-          author: author,
-          content: content,
-          category: category,
-          image: image,
+            title: title,
+            author: author,
+            content: content,
+            category: category,
+            image: image,
         };
-        
-        let response = await axios.post(`${apiUrl}//api/blog`, newBlog)
+
+        let response = await axios.post(`${apiUrl}//api/blog`, newBlog);
         if (response.status === 200) {
-          alert(response.data.msg);
-          setTimeout(() => navigate("/posts"), 1000);
-        } else{
-          alert("error")
+            alert(response.data.msg);
+            setTimeout(() => navigate("/posts"), 1000);
+        } else {
+            alert("error")
         }
-      }
-    
+    }
 
     return (
         <Container className='my-5 '>
@@ -48,36 +49,47 @@ function PostForm() {
                         <Card.Title className='text-center pt-5 text-color2'><h1>Post Form</h1></Card.Title>
                         <Form className='p-5' onSubmit={createBlog}>
                             <Form.Group className="mb-3" controlId="formBasicText">
-                            <Form.Label>Post Title</Form.Label>
+                                <Form.Label>Post Title</Form.Label>
                                 <Form.Control
-                                        className='p-2'
-                                        type="text"
-                                        placeholder="Post Title"
-                                        value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
+                                    className='p-2'
+                                    type="text"
+                                    placeholder="Post Title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
                                 />
                             </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicText2">
+                            <Form.Group className="mb-3" controlId="formBasicText2">
                                 <Form.Label>Author</Form.Label>
-                                    <Form.Control
-                                        className='p-2'
-                                        type="text"
-                                        placeholder="Author"
-                                        value={author}
-                                        onChange={(e) => setAuthor(e.target.value)}
-                                    />
-                                </Form.Group>
+                                <Form.Control
+                                    className='p-2'
+                                    type="text"
+                                    placeholder="Author"
+                                    value={author}
+                                    onChange={(e) => setAuthor(e.target.value)}
+                                />
+                            </Form.Group>
+                            {!editorVisible ? (
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Post Content</Form.Label>
                                     <Form.Control
-                                     as="textarea"
-                                      rows={10} 
-                                      value={content}
-                                      onChange={(e) => setContent(e.target.value)}
+                                        as="textarea"
+                                        rows={10}
+                                        value={content}
+                                        onChange={(e) => setContent(e.target.value)}
                                     />
                                 </Form.Group>
+                            ) : (
+                                <Editor handleContentChange={setContent} />
+                            )}
+                            <Button
+                                onClick={() => setEditorVisible(!editorVisible)}
+                                className='w-100 bg-color'
+                                variant="primary"
+                            >
+                                {!editorVisible ? "Show Editor" : "Hide Editor"}
+                            </Button>
                             <Form.Group className="mb-3" controlId="formBasicText4">
-                            <Form.Label>Category</Form.Label>
+                                <Form.Label>Category</Form.Label>
                                 <Form.Control
                                     className='p-2'
                                     type="text"
@@ -87,7 +99,7 @@ function PostForm() {
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicText5">
-                            <Form.Label>Featured Image</Form.Label>
+                                <Form.Label>Featured Image</Form.Label>
                                 <Form.Control
                                     className='p-2'
                                     type="text"
