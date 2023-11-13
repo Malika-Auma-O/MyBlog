@@ -16,6 +16,8 @@ import PostDetails from "./components/PostDetails";
 import Portfolio from "./components/Portfolio";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import RichText from "./components/RichText";
+import PostForm from "./components/PostForm";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path="/about" element={<About />}/>
             <Route path="/contact" element={<Contact />}/>
+            <Route path="/rich" element={<RichText/>}/>
             <Route path="/posts" element={<Posts />}/>
+            <Route path="/blog-form" element={<PostForm />}/>
             <Route path="/post/:slug" element={<PostDetails />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
             <Route path="/register" element={<Register />}/>

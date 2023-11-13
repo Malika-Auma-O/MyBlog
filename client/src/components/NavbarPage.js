@@ -34,6 +34,12 @@ function NavbarPage() {
             <Nav.Link as={Link} to="/about" className={`text-color ${location.pathname === '/about' ? 'text-primary' : ''}`}>About</Nav.Link>
             <Nav.Link as={Link} to="/contact" className={`text-color ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
           </Nav>
+          <NavDropdown title="" id="navbarScrollingDropdown">
+              <NavDropdown.Item as={Link} to="/login" className={`text-color ${location.pathname === '/login' ? 'text-primary' : ''}`}>Login</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/register" className={`text-color ${location.pathname === '/register' ? 'text-primary' : ''}`} >
+                Register
+              </NavDropdown.Item>
+            </NavDropdown>
         </Navbar.Collapse>
         <Form className="d-flex">
           <InputGroup>
