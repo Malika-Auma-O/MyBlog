@@ -17,7 +17,6 @@ function PostForm() {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
-    const [editorVisible, setEditorVisible] = useState(false);
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -68,26 +67,7 @@ function PostForm() {
                                     onChange={(e) => setAuthor(e.target.value)}
                                 />
                             </Form.Group>
-                            {!editorVisible ? (
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label>Post Content</Form.Label>
-                                    <Form.Control
-                                        as="textarea"
-                                        rows={10}
-                                        value={content}
-                                        onChange={(e) => setContent(e.target.value)}
-                                    />
-                                </Form.Group>
-                            ) : (
-                                <Editor handleContentChange={setContent} />
-                            )}
-                            <Button
-                                onClick={() => setEditorVisible(!editorVisible)}
-                                className='w-100 bg-color'
-                                variant="primary"
-                            >
-                                {!editorVisible ? "Show Editor" : "Hide Editor"}
-                            </Button>
+                            <Editor handleContentChange={setContent} /> {/* Always visible */}
                             <Form.Group className="mb-3" controlId="formBasicText4">
                                 <Form.Label>Category</Form.Label>
                                 <Form.Control
