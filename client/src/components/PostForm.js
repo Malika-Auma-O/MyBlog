@@ -20,6 +20,10 @@ function PostForm() {
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
+    const headers = {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      };
+
     async function createBlog(event) {
         event.preventDefault();
         let newBlog = {
@@ -30,7 +34,7 @@ function PostForm() {
             image: image,
         };
 
-        let response = await axios.post(`${apiUrl}//api/blog`, newBlog);
+        let response = await axios.post(`${apiUrl}//api/blog`, newBlog, { headers });
         if (response.status === 200) {
             alert(response.data.msg);
             setTimeout(() => navigate("/posts"), 1000);

@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from 'react';
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,6 +15,28 @@ import logo from "../images/design2.gif";
 
 function NavbarPage() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [decoded, setDecoded] = useState(null);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        setDecoded(decodedToken);
+      } catch (error) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
+  }, [token, navigate]);
+
+  function handleLogout() {
+    // remove user from local storage and set current user to null
+    localStorage.removeItem('token');
+    navigate("/login")
+  }
+
 
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -34,11 +59,25 @@ function NavbarPage() {
             <Nav.Link as={Link} to="/about" className={`text-color ${location.pathname === '/about' ? 'text-primary' : ''}`}>About</Nav.Link>
             <Nav.Link as={Link} to="/contact" className={`text-color ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
           </Nav>
+          <Navbar.Text>
+            {decoded && decoded.username ? `Signed in as: ${decoded.username.split('@')[0]}` : ""}
+          </Navbar.Text>
+
           <NavDropdown title="" id="navbarScrollingDropdown">
-              <NavDropdown.Item as={Link} to="/login" className={`text-color ${location.pathname === '/login' ? 'text-primary' : ''}`}>Login</NavDropdown.Item>
+            {token ? 
+            (
+              <Nav.Link 
+              onClick={handleLogout}
+               className='text-color'>Logout</Nav.Link>
+            ) : (
+              <>
+               <NavDropdown.Item as={Link} to="/login" className={`text-color ${location.pathname === '/login' ? 'text-primary' : ''}`}>Login</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/register" className={`text-color ${location.pathname === '/register' ? 'text-primary' : ''}`} >
                 Register
               </NavDropdown.Item>
+              </>
+            )}
+             
             </NavDropdown>
         </Navbar.Collapse>
         <Form className="d-flex">
