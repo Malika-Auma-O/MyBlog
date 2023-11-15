@@ -3,29 +3,26 @@ import { useQuill } from 'react-quilljs';
 import BlotFormatter from 'quill-blot-formatter';
 import 'quill/dist/quill.snow.css';
 
-import './Editor.css';
-
-const Editor = () => {
+const Editor = ({ setContent, content }) => {
   const { quill, quillRef, Quill } = useQuill({
     modules: { blotFormatter: {} }
   });
 
   if (Quill && !quill) {
-    // const BlotFormatter = require('quill-blot-formatter');
     Quill.register('modules/blotFormatter', BlotFormatter);
   }
 
   useEffect(() => {
     if (quill) {
-      quill.on('text-change', (delta, oldContents) => {
-        console.log('Text change!');
-        console.log(delta);
-
-        let currrentContents = quill.getContents();
-        console.log(currrentContents.diff(oldContents));
+      quill.on('text-change', (delta, oldContents, source) => {
+        if (source === 'user') {
+          const html = quill.root.innerHTML;
+          setContent(html); // Update the content in the form
+        }
       });
+      quill.root.innerHTML = content; // Set initial content in the editor
     }
-  }, [quill, Quill]);
+  }, [quill, Quill, content, setContent]);
 
   return (
     <div>

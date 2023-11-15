@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const BlogSchema = new mongoose.Schema( {
-    title: {type:String, required:true},
+    title: {type:String, required:false},
     author: { type: String, required: false },
-    content: { type: mongoose.Schema.Types.Mixed, required: true },
+    content: { type: mongoose.Schema.Types.Mixed, required: false},
     category: { type: String, required: false },
     image: { type: String, required: false },
     imagePublicId: { type: String, required: false },

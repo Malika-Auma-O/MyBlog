@@ -60,9 +60,8 @@ function NavbarPage() {
             <Nav.Link as={Link} to="/contact" className={`text-color ${location.pathname === '/contact' ? 'text-primary' : ''}`}>Contact</Nav.Link>
           </Nav>
           <Navbar.Text>
-            {decoded && decoded.username ? `Signed in as: ${decoded.username.split('@')[0]}` : ""}
+          {decoded && decoded.username ? decoded.username.split('@')[0] : "Guest"}
           </Navbar.Text>
-
           <NavDropdown title="" id="navbarScrollingDropdown">
             {token ? 
             (

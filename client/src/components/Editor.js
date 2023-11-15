@@ -7,9 +7,6 @@ import './Editor.css';
 
 Quill.register('modules/imageResize', ImageResize);
 
-/*
- * Simple editor component that takes placeholder text as a prop
- */
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +16,8 @@ class Editor extends Component {
 
   handleChange(html) {
     this.setState({ editorHtml: html });
-    console.log(html);
+    // Pass the content back to the parent component
+    this.props.handleContentChange(html);
   }
 
   render() {
@@ -37,10 +35,6 @@ class Editor extends Component {
   }
 }
 
-/*
- * Quill modules to attach to editor
- * See https://quilljs.com/docs/modules/ for complete options
- */
 Editor.modules = {
   toolbar: [
     [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -56,7 +50,6 @@ Editor.modules = {
     ['clean']
   ],
   clipboard: {
-    // toggle to add extra line breaks when pasting HTML:
     matchVisual: false
   },
   imageResize: {
@@ -65,10 +58,6 @@ Editor.modules = {
   }
 };
 
-/*
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
 Editor.formats = [
   'header',
   'font',

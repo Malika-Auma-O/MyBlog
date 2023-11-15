@@ -17,31 +17,59 @@ function PostForm() {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+    const [previewUrl, setPreviewUrl] = useState(null);
+
+    const onChangeImage = (e) => {
+        const file = e.target.files[0];
+    
+        if (file) {
+          const reader = new FileReader();
+    
+          reader.onloadend = () => {
+            setPreviewUrl(reader.result);
+          };
+    
+          reader.readAsDataURL(file);
+        } else {
+          setPreviewUrl(null);
+        }
+    
+        setImage(file);
+      };
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      };
-
-    async function createBlog(event) {
-        event.preventDefault();
-        let newBlog = {
-            title: title,
-            author: author,
-            content: content,
-            category: category,
-            image: image,
+    const createBlog = (e) => {
+        e.preventDefault();
+    
+        let formData = new FormData();
+        formData.append("title", title);
+        formData.append("author", author);
+        formData.append("content", content);
+        formData.append("category", category);
+        formData.append("image", image);
+    
+        const headers = {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         };
-
-        let response = await axios.post(`${apiUrl}//api/blog`, newBlog, { headers });
-        if (response.status === 200) {
-            alert(response.data.msg);
-            setTimeout(() => navigate("/posts"), 1000);
-        } else {
-            alert("error")
-        }
-    }
+    
+        axios
+          .post(`${apiUrl}/api/blog`, formData, { headers })
+          .then((res) => {
+            alert("Image added successfully!");
+            navigate("/posts");
+          })
+          .catch((err) => {
+            console.error("Error adding image:", err);
+          });
+    
+        
+        setTitle("");
+        setAuthor("");
+        setContent("");
+        setCategory("");
+        setImage(null);
+      };
 
     return (
         <Container className='my-5 '>
@@ -71,25 +99,32 @@ function PostForm() {
                                     onChange={(e) => setAuthor(e.target.value)}
                                 />
                             </Form.Group>
-                            <Editor handleContentChange={setContent} /> {/* Always visible */}
+                            <Editor handleContentChange={setContent} />
                             <Form.Group className="mb-3" controlId="formBasicText4">
                                 <Form.Label>Category</Form.Label>
-                                <Form.Control
+                                <Form.Select
                                     className='p-2'
-                                    type="text"
-                                    placeholder="Category"
+                                    aria-label="Default select example"
                                     value={category}
-                                    onChange={(e) => setCategory(e.target.value)}
-                                />
+                                    onChange={(e) => {setCategory(e.target.value)}}
+                                >
+                                    <option value="HTML">HTML</option>
+                                    <option value="CSS">CSS</option>
+                                    <option value="Javascript">Javascript</option>
+                                    <option value="React">React</option>
+                                    <option value="Angular">Angular</option>
+                                    <option value="Node JS">Node JS</option>
+                                    <option value="WordPress">WordPress</option>
+                                    <option value="Others">Others</option>
+                                </Form.Select>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicText5">
+                            <Form.Group controlId="formFileMultiple" className="mb-3">
                                 <Form.Label>Featured Image</Form.Label>
                                 <Form.Control
-                                    className='p-2'
-                                    type="text"
-                                    placeholder="Featured Image"
-                                    value={image}
-                                    onChange={(event) => setImage(event.target.value)}
+                                 type="file"
+                                  multiple
+                                //   value={image}
+                                  onChange={onChangeImage}
                                 />
                             </Form.Group>
                             <Button className='w-100 bg-color' variant="primary" type="submit">

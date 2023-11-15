@@ -64,7 +64,7 @@ function Register() {
                             </Button>
                             <Card.Text className='my-3'>
                                 Don't have an account?
-                                <Card.Link href="login"> Register here.</Card.Link>
+                                <Card.Link href="register"> Register here.</Card.Link>
                             </Card.Text>
                         </Form>
                     </Card>
