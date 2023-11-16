@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -8,7 +10,6 @@ import Nav from "react-bootstrap/Nav";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import blog from "../images/sleepRepeat.avif";
 import mern from "../images/mern.jpg";
 import PortfolioModal from './PortfolioModal';
 import Footer from "./Footer";
@@ -20,6 +21,9 @@ function Portfolio() {
     const handleSelect = (eventKey) => {
         setActiveKey(eventKey);
       };
+    const navigate = useNavigate();
+    const [projects, setProjects] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
       const languages = [
         { name: "CSS", percentage: 80 },
@@ -40,6 +44,27 @@ function Portfolio() {
     
         return () => clearTimeout(animationTimeout);
       }, []);
+
+      const getAllProjects = () => {
+        axios
+          .get(`${apiUrl}/api/projects`, )
+          .then((res) => {
+            // Reverse the array to display the latest Project first
+            setProjects(res.data.reverse());
+          })
+          .catch((err) => {
+            console.error("Error getting Projects:", err);
+          });
+      };
+
+      useEffect(() => {
+        getAllProjects();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+
+      function pprojectDetails(project) {
+        navigate("/project-modal", { state: { project } });
+      }
       
     
   return (
@@ -148,26 +173,26 @@ function Portfolio() {
           </Nav.Item>
         </Nav>
         <Row xs={1} md={1} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
-            <Col key={idx}>
+          {projects.map((project) => (
+            <Col key={project._id}>
               <Card className="p-4 mb-4">
                 <Row>
                   <Col xs={12} md={6}>
                     <Card.Body>
                       <Button className="my-4 bg-color" onClick={() => setModalShow(true)}>
-                        Card title
+                      {project.category}
                       </Button>
                       <Card.Title>
-                        This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                      {project.title}
                       </Card.Title>
-                      <Card.Subtitle className="mt-4 text-muted">Date Created</Card.Subtitle>
+                      <Card.Subtitle className="mt-4 text-muted">{new Date(project.createdAt).toLocaleDateString()}</Card.Subtitle>
                     </Card.Body>
                   </Col>
                   <Col xs={12} md={6}>
                     <div className="image-container">
                       <Card.Img 
                       onClick={() => setModalShow(true)}
-                      variant="top" src={blog} className="card-img rounded" />
+                      variant="top" src={project.images[0]}  className="card-img rounded" />
                     </div>
                   </Col>
                 </Row>
