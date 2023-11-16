@@ -150,7 +150,7 @@ function Portfolio() {
         <Row xs={1} md={1} className="g-4">
           {Array.from({ length: 4 }).map((_, idx) => (
             <Col key={idx}>
-              <Card className="p-4">
+              <Card className="p-4 mb-4">
                 <Row>
                   <Col xs={12} md={6}>
                     <Card.Body>

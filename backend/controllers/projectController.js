@@ -1,23 +1,21 @@
 const Project = require("../models/projectModel")
 const { projectImageParser } = require("../middleware/uploadMiddleware");
 
-const uploadProjectImage = projectImageParser.single("image");
+const uploadProjectImage = projectImageParser.array("images");
 
 const createProject = async (req, res) => {
   try {
     const userId = req.user.userId;
 
     // handle image upload
-    uploadProjectImage(req, res, async(err) => {
-        if(err) {
-            return res.status(500).send({ msg: "Failed to upload project image", error: err });
-          }
+    uploadProjectImage(req, res, async (err) => {
+      if (err) {
+        return res.status(500).send({ msg: "Failed to upload project image", error: err });
+      }
 
-        // if a new image is uploaded save the Cloudinary image URL to the project
-        if(req.file) {
-            req.body.image = req.file.path;
-            req.body.imagePublicId = req.file.filename;
-          }
+      // if new images are uploaded, save the Cloudinary image URLs and public IDs to the project
+      const images = req.files ? req.files.map(file => file.path) : [];
+      const imagePublicIds = req.files ? req.files.map(file => file.filename) : [];
 
       // create a new project
       let project = {
@@ -26,18 +24,18 @@ const createProject = async (req, res) => {
         content: req.body.content,
         category: req.body.category,
         technologies: req.body.technologies,
-        image: req.body.image,
-        imagePublicId : req.body.imagePublicId,
-      }
-      
+        images: images,
+        imagePublicIds: imagePublicIds,
+      };
+
       const newProject = await Project.create(project);
       res.status(201).send({ msg: "Project created successfully", newProject });
-    })
+    });
   } catch (error) {
     console.log("error creation", error);
     res.status(500).send({ msg: "Unable to create Project", error });
   }
-}
+};
 
 const getAllProjects = async (req, res) => {
   try {
@@ -77,36 +75,33 @@ const updateProject = async (req, res) => {
       return res.status(403).send({ msg: "You are not authorized to update this Project" });
     }
 
-    uploadProjectImage(req, res, async(err) => {
+    uploadProjectImage(req, res, async (err) => {
       if (err) {
         return res.status(500).send({ msg: "Failed to upload project image", error: err });
       }
 
       // Update the project details with the new data
-      existingProject.title= req.body.title,
-      existingProject.author= req.body.author,
-      existingProject.content= req.body.content,
-      existingProject.category= req.body.category,
-      existingProject.image= req.body.image
+      existingProject.title = req.body.title;
+      existingProject.author = req.body.author;
+      existingProject.content = req.body.content;
+      existingProject.category = req.body.category;
 
-      // if a new image is uploaded, save the Cloudinary image URL and public ID to the project
-      if (req.file) {
-        existingProject.image = req.file.path;
-        existingProject.imagePublicId = req.file.filename;
+      // if new images are uploaded, save the Cloudinary image URLs and public IDs to the project
+      if (req.files) {
+        existingProject.images = req.files.map(file => file.path);
+        existingProject.imagePublicIds = req.files.map(file => file.filename);
       }
 
       // Save the updated project to the database
       await existingProject.save();
 
       res.send({ msg: "Project updated successfully", updatedProject: existingProject });
-
-    })
-    
+    });
   } catch (error) {
     console.log("error updating", error);
     res.status(500).send({ msg: "Unable to update Project", error });
   }
-}
+};
 
 const deleteProject = async (req, res) => {
   try {

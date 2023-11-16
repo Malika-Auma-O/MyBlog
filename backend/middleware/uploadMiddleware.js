@@ -16,7 +16,7 @@ const blogImageStorage = new CloudinaryStorage({
     folder: "blog-images", 
     format: async (req, file) => "jpeg",
     transformation: [{ width: 500, height: 500, crop: "limit" }],
-    public_id: (req, file) => `image-${Date.now()}`
+    public_id: (req, file) => `images-${Date.now()}`
   },
 });
 
@@ -27,7 +27,7 @@ const projectImageStorage = new CloudinaryStorage({
     folder: "project-images", 
     format: async (req, file) => "jpeg",
     transformation: [{ width: 500, height: 500, crop: "limit" }],
-    public_id: (req, file) => `image-${Date.now()}`
+    public_id: (req, file) => `images-${Date.now()}`
   },
 });
 

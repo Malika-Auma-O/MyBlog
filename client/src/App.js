@@ -14,6 +14,7 @@ import Contact from "./components/Contact";
 import Posts from "./components/Posts";
 import PostDetails from "./components/PostDetails";
 import Portfolio from "./components/Portfolio";
+import PortfolioProjectForm from "./components/PortfolioProjectForm";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PostForm from "./components/PostForm";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/blog-form" element={<PostForm />}/>
             <Route path="/post" element={<PostDetails />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
+            <Route path="/project-form" element={<PortfolioProjectForm />}/>
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="*" element={<NotFound />} />

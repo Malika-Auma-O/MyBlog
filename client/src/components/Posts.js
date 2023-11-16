@@ -50,7 +50,7 @@ function Posts() {
             
             <Row xs={1} md={2} lg={3} className="g-4">
         {blogs.map((blog) => (
-            <Col key={blog._id}>
+            <Col key={blog._id} className="mb-4">
                 <Card className='h-100 p-4'>
                     <div className="image-container custom-pointer"
                     onClick={() => postDetails(blog)}

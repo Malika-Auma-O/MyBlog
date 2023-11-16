@@ -5,8 +5,8 @@ const ProjectSchema = new mongoose.Schema( {
     content: { type: String, required: true },
     category: { type: String, required: false },
     technologies: { type: String, required: false },
-    image: { type: String, required: false },
-    imagePublicId: { type: String, required: false },
+    images: [{ type: String, required: false }],
+    imagePublicIds: [{ type: String, required: false }],
     userId: {type: String},
 }, {timestamps: true});
 
