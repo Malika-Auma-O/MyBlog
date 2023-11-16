@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,25 +18,12 @@ function PostForm() {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
-    const [previewUrl, setPreviewUrl] = useState(null);
 
     const onChangeImage = (e) => {
         const file = e.target.files[0];
-    
-        if (file) {
-          const reader = new FileReader();
-    
-          reader.onloadend = () => {
-            setPreviewUrl(reader.result);
-          };
-    
-          reader.readAsDataURL(file);
-        } else {
-          setPreviewUrl(null);
-        }
-    
         setImage(file);
-      };
+    };
+    
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -108,6 +96,7 @@ function PostForm() {
                                     value={category}
                                     onChange={(e) => {setCategory(e.target.value)}}
                                 >
+                                    <option value=""></option>
                                     <option value="HTML">HTML</option>
                                     <option value="CSS">CSS</option>
                                     <option value="Javascript">Javascript</option>

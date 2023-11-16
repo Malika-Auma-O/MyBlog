@@ -86,21 +86,20 @@ max-width: fit-content;
   object-fit: cover !important;
   width: 100% !important;
   height: 100% !important;
+  transition: transform 0.2s !important;
 }
 
 .image-container {
   perspective: 1000px !important;
+  height: 200px !important;
+  overflow: hidden !important;
 }
 
 .image-container:hover .card-img {
-  transform: translateZ(50px) !important;
+  transform: translateZ(200px) !important;
   transition: transform 0.5s !important;
+  
 }
-
-.card-img {
-  transition: transform 0.2s !important;
-}
-
 
 .background {
   background-image: url("./images/backs.png");
@@ -119,6 +118,10 @@ max-width: fit-content;
 
 .underline {
   border-bottom: 1px solid #000B73 !important;
+}
+
+.custom-pointer {
+  cursor: pointer;
 }
 
 #footer {
@@ -163,4 +166,3 @@ max-width: fit-content;
     opacity: 1; 
   }
 }
-
