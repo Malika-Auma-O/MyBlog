@@ -17,11 +17,11 @@ function PortfolioProjectForm() {
     const [technologies, setTechnologies] = useState("");
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
-    const [images, setImages] = useState("");
+    const [images, setImages] = useState([]);
 
     const onChangeImage = (e) => {
-        const file = e.target.files[0];
-        setImages(file);
+        const files = e.target.files;
+        setImages(files);
     };
     
 
@@ -35,28 +35,31 @@ function PortfolioProjectForm() {
         formData.append("technologies", technologies);
         formData.append("content", content);
         formData.append("category", category);
-        formData.append("images", images);
+        // Append each image to the formData
+        for (const image of images) {
+            formData.append("images", image);
+        }
     
         const headers = {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         };
     
         axios
-          .post(`${apiUrl}/api/blog`, formData, { headers })
+          .post(`${apiUrl}/api/project`, formData, { headers })
           .then((res) => {
             alert("Images added successfully!");
-            navigate("/posts");
+            navigate("/portfolio");
           })
           .catch((err) => {
             console.error("Error adding images:", err);
           });
     
-        
+        // clear the fields
         setTitle("");
         setTechnologies("");
         setContent("");
         setCategory("");
-        setImages(null);
+        setImages([]); // Clear the images array
       };
 
     return (
@@ -110,10 +113,9 @@ function PortfolioProjectForm() {
                             <Form.Group controlId="formFileMultiple" className="mb-3">
                                 <Form.Label>Featured Images</Form.Label>
                                 <Form.Control
-                                 type="file"
-                                  multiple
-                                //   value={image}
-                                  onChange={onChangeImage}
+                                    type="file"
+                                    multiple
+                                    onChange={onChangeImage}
                                 />
                             </Form.Group>
                             <Button className='w-100 bg-color' variant="primary" type="submit">
