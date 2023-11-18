@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -16,12 +15,13 @@ import Footer from "./Footer";
 
 function Portfolio() {
   const [modalShow, setModalShow] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
     const [animationComplete, setAnimationComplete] = useState(false);
     const [activeKey, setActiveKey] = useState("1");
     const handleSelect = (eventKey) => {
         setActiveKey(eventKey);
       };
-    const navigate = useNavigate();
+    
     const [projects, setProjects] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -62,9 +62,10 @@ function Portfolio() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
 
-      function pprojectDetails(project) {
-        navigate("/project-modal", { state: { project } });
-      }
+      const handleProjectClick = (project) => {
+        setSelectedProject(project);
+        setModalShow(true);
+      };
       
     
   return (
@@ -175,7 +176,7 @@ function Portfolio() {
         <Row xs={1} md={1} className="g-4">
           {projects.map((project) => (
             <Col key={project._id}>
-              <Card className="p-4 mb-4">
+              <Card className="p-4 mb-4" onClick={() => handleProjectClick(project)}>
                 <Row>
                   <Col xs={12} md={6}>
                     <Card.Body>
@@ -204,6 +205,7 @@ function Portfolio() {
       <PortfolioModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        selectedProject={selectedProject}
       />
       <Footer/>
     </div>

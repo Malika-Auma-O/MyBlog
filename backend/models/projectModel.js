@@ -8,6 +8,7 @@ const ProjectSchema = new mongoose.Schema( {
     images: [{ type: String, required: false }],
     imagePublicIds: [{ type: String, required: false }],
     userId: {type: String},
+    website: { type: String, required: false }
 }, {timestamps: true});
 
 const Project = mongoose.model("Project", ProjectSchema);

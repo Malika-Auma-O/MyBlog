@@ -1,80 +1,73 @@
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
 
 function PortfolioModal(props) {
+  const { show, onHide, selectedProject } = props;
+
+  const redirectToWebsite = () => {
+    // Check if the selected project has a website URL
+    if (selectedProject && selectedProject.website) {
+      // Open the website URL in a new tab
+      window.open(selectedProject.website, '_blank');
+    } else {
+      alert('Website URL not available for the selected project');
+    }
+  };
+ 
+
   return (
     <div>
       <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+        show={show}
+        onHide={onHide}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
-        <Carousel fade>
-          <Carousel.Item>
-          <Image
-              src="https://images.unsplash.com/photo-1659885785824-3e72856b8fef?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Third slide"
-              fluid
-            />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-          <Image
-              src="https://images.unsplash.com/photo-1668749092857-dc9d93494586?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-              alt="Third slide"
-              fluid
-            />
-            <Carousel.Caption>
+        
+        <Carousel slide={false}>
+          {selectedProject && selectedProject.images.map((image, index) => (
+            <Carousel.Item key={index}>
+              <Image
+                src={image}
+                alt={`Slide ${index + 1}`}
+                fluid
+                className=' custom-carousel-image'
+              />
+              {/* <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-          <Image
-              src="https://images.unsplash.com/photo-1627635174707-a629d585e1e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8"
-              alt="Third slide"
-              fluid
-            />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
+            </Carousel.Caption> */}
+            </Carousel.Item>
+          ))}
         </Carousel>
-        
+
         <Modal.Header closeButton>
           <div>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
+            <Modal.Title className='underline text-color' id="contained-modal-title-vcenter">
+              {selectedProject && selectedProject.category}
             </Modal.Title>
-            <Modal.Title className='text-secondary' id="contained-modal-title-vcenter"><h5>Sub heading</h5>
-            </Modal.Title>
+           
           </div>
         </Modal.Header>
+
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+          <h4 className='m-2'>{selectedProject && selectedProject.title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: selectedProject && selectedProject.content }} />
+              <h5 className='text-color my-3'><span className='text-dark'>Technologies: </span>{selectedProject && selectedProject.technologies}</h5>
+      
         </Modal.Body>
+
         <Modal.Footer>
-          <Button onClick={console.log("navigate to app website")}>Click to visit site</Button>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button className='me-2' onClick={redirectToWebsite}>View the site</Button>
+          <Button onClick={onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>
-    
   );
 }
 
-export default PortfolioModal
+export default PortfolioModal;

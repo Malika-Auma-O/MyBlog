@@ -166,3 +166,25 @@ max-width: fit-content;
     opacity: 1; 
   }
 }
+
+.modal {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.custom-carousel-image {
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 100vh !important; /* Default height for larger screens */
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+  
+    height: 40vh !important; 
+  }
+
+  @media (max-width: 1024px) {
+    height: 45vh !important;
+  }
+}

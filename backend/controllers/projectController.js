@@ -26,6 +26,7 @@ const createProject = async (req, res) => {
         technologies: req.body.technologies,
         images: images,
         imagePublicIds: imagePublicIds,
+        website: req.body.website,
       };
 
       const newProject = await Project.create(project);
