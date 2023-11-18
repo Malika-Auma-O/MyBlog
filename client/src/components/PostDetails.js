@@ -102,9 +102,9 @@ const PostDetails = () => {
                     </Card>
 
                     <Card.Body>
-                    <Card.Text>
+                    {/* <Card.Text>
                         I design and develop stylish, modern websites.
-                    </Card.Text>
+                    </Card.Text> */}
                     </Card.Body>
                 </Card>
                 
