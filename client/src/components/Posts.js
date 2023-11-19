@@ -5,12 +5,14 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
 import post from "../images/programming.jpg";
 import Footer from './Footer';
 
 function Posts() {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     
@@ -20,6 +22,7 @@ function Posts() {
           .then((res) => {
             // Reverse the Blogs array to display the latest Blog first
             setBlogs(res.data.reverse());
+            setLoading(false);
           })
           .catch((err) => {
             console.error("Error getting Blogs:", err);
@@ -46,31 +49,36 @@ function Posts() {
             </Card.ImgOverlay>
         </Card>
         <Container className='mt-5'>
-            <h1 className="text-center text-color2">All Blog Posts</h1>
-            
-            <Row xs={1} md={2} lg={3} className="g-4">
-        {blogs.map((blog) => (
-            <Col key={blog._id} className="mb-4">
-                <Card className='h-100 p-4'>
-                    <div className="image-container custom-pointer"
-                    onClick={() => postDetails(blog)}
-                    >
-                        <Card.Img className='card-img rounded' variant="top" src={blog.image} />
-                    </div>
+            <h1 className="text-center text-color2 mb-2">All Blog Posts</h1>
+            {loading ? ( 
+              <div className='d-flex align-items-center justify-content-center' style={{ height: '50vh' }}>
+                  <Spinner animation='border' className='text-color' />
+              </div>
+            ) : (
+                <Row xs={1} md={2} lg={3} className="g-4">
+                {blogs.map((blog) => (
+                    <Col key={blog._id} className="mb-4">
+                        <Card className='h-100 p-4'>
+                            <div className="image-container custom-pointer"
+                            onClick={() => postDetails(blog)}
+                            >
+                                <Card.Img className='card-img rounded' variant="top" src={blog.image} />
+                            </div>
 
-                    <Card.Body>
-                        <Card.Title>{blog.title}</Card.Title>
-                        <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
-                        {/* <Card.Text>
-                            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-                        </Card.Text> */}
-                        <Card.Text className="text-secondary">{new Date(blog.createdAt).toLocaleDateString()}</Card.Text>
-                        <Card.Link className="custom-pointer" onClick={() => postDetails(blog)}>Learn More</Card.Link>
-                    </Card.Body>
-                </Card>
-            </Col>
-        ))}
-    </Row>
+                            <Card.Body>
+                                <Card.Title>{blog.title}</Card.Title>
+                                <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
+                                {/* <Card.Text>
+                                    <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+                                </Card.Text> */}
+                                <Card.Text className="text-secondary">{new Date(blog.createdAt).toLocaleDateString()}</Card.Text>
+                                <Card.Link className="custom-pointer" onClick={() => postDetails(blog)}>Learn More</Card.Link>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+            )}
         </Container>
         <Footer/>
     </div>

@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ListGroup from "react-bootstrap/ListGroup";
+import Spinner from 'react-bootstrap/Spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import mern from "../images/mern.jpg";
 import PortfolioModal from './PortfolioModal';
@@ -26,8 +27,8 @@ function Portfolio() {
     filterProjects(lowerCaseCategory);
   };
   
+  const [loading, setLoading] = useState(true);
   
-
   const [projects, setProjects] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -56,6 +57,7 @@ function Portfolio() {
       .then((res) => {
         setProjects(res.data.reverse());
         setFilteredProjects(res.data.reverse());
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error getting Projects:", err);
@@ -152,34 +154,40 @@ function Portfolio() {
           </Nav.Item>
         ))}
         </Nav>
-        <Row xs={1} md={1} className="g-4">
-          {filteredProjects.map((project) => (
-            <Col key={project._id}>
-              <Card className="p-4 mb-4" onClick={() => handleProjectClick(project)}>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <Card.Body>
-                      <Button className="my-4 bg-color" onClick={() => setModalShow(true)}>
-                        {project.category}
-                      </Button>
-                      <Card.Title>
-                        {project.title}
-                      </Card.Title>
-                      <Card.Subtitle className="mt-4 text-muted">{new Date(project.createdAt).toLocaleDateString()}</Card.Subtitle>
-                    </Card.Body>
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <div className="image-container">
-                      <Card.Img
-                        onClick={() => setModalShow(true)}
-                        variant="top" src={project.images[0]} className="card-img rounded" />
-                    </div>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        {loading ? ( 
+          <div className='d-flex align-items-center justify-content-center' style={{ height: '50vh' }}>
+              <Spinner animation='border' className='text-color' />
+          </div>
+        ) : (
+          <Row xs={1} md={1} className="g-4">
+              {filteredProjects.map((project) => (
+                <Col key={project._id}>
+                  <Card className="p-4 mb-4" onClick={() => handleProjectClick(project)}>
+                    <Row>
+                      <Col xs={12} md={6}>
+                        <Card.Body>
+                          <Button className="my-4 bg-color" onClick={() => setModalShow(true)}>
+                            {project.category}
+                          </Button>
+                          <Card.Title>
+                            {project.title}
+                          </Card.Title>
+                          <Card.Subtitle className="mt-4 text-muted">{new Date(project.createdAt).toLocaleDateString()}</Card.Subtitle>
+                        </Card.Body>
+                      </Col>
+                      <Col xs={12} md={6}>
+                        <div className="image-container">
+                          <Card.Img
+                            onClick={() => setModalShow(true)}
+                            variant="top" src={project.images[0]} className="card-img rounded" />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+        )}
       </Container>
       <PortfolioModal
         show={modalShow}

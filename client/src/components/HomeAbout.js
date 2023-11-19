@@ -30,8 +30,8 @@ function HomeAbout() {
               <Card.Text>
               I specialize in the MERN stack with a a good grasp of Material UI and Bootstrap for front-end development. I've also gained a basic understanding of WordPress for web content management.
               </Card.Text>
-              <div className='card-link'>
-              <Card.Link  href="/about">Check Out My Portfolio</Card.Link>
+              <div className='card-link mt-2'>
+              <Card.Link  href="/portfolio">Check Out My Portfolio</Card.Link>
               </div>
 
             </Card.Body>

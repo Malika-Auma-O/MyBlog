@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Hero from "../images/Hero.mp4"
@@ -7,7 +8,11 @@ import '../index.css'
 import Footer from './Footer';
 
 function Home() {
+  const navigate = useNavigate();
 
+  const toBlogPosts = () => {
+    navigate("/posts");
+  }
     
   return (
     <div>
@@ -24,7 +29,10 @@ function Home() {
         <Card.Title  className='text-white display-1 customBolderText slide-in-fade-in-animation'  >
           and Thoughts.
         </Card.Title>
-        <Button  className='slide-in-fade-in-animation  text-color' variant="light">All Blog Posts</Button>
+        <Button
+          onClick={toBlogPosts}
+          className='slide-in-fade-in-animation  text-color' variant="light"
+        >All Blog Posts</Button>
       </Card.ImgOverlay>
     </Card>
     <br></br>

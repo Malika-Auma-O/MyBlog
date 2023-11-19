@@ -2,13 +2,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col, Image, Button, Card, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button, Card, ListGroup, Spinner } from 'react-bootstrap';
 import Footer from './Footer';
 
 const PostDetails = () => {
   const location = useLocation();
   const [blogs, setBlogs] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(location.state.blog);
+  const [loading, setLoading] = useState(true);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const getAllBlogs = () => {
@@ -22,6 +23,7 @@ const PostDetails = () => {
          const lastThreeImages = newestFirstImages.slice(0, 3);
 
         setBlogs(lastThreeImages);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error getting Blogs:", err);
@@ -40,6 +42,11 @@ const PostDetails = () => {
   return (
     <div >
       <Container className='my-5'>
+      {loading ? ( 
+        <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
+        <Spinner animation='border' className='text-color' />
+      </div>
+      ) : (
         <Row >
           <Col className='mb-4' lg={8} >
             <Card>
@@ -69,8 +76,8 @@ const PostDetails = () => {
                 </div>
                 <hr/>
                 <Card.Text>
-                            <div dangerouslySetInnerHTML={{ __html: selectedBlog.content }} />
-                        </Card.Text>
+                  <div dangerouslySetInnerHTML={{ __html: selectedBlog.content }} />
+                </Card.Text>
                 <div >
                     <Button className='m-1 bg-color' >Angular</Button>{' '}
                     <Button className='m-1 bg-color' >Development</Button>{' '}
@@ -157,6 +164,8 @@ const PostDetails = () => {
             </div>
           </Col>
         </Row>
+      )}
+        
       </Container>
       <Footer/>
     </div>

@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Button, Card, Image, ListGroup } from "react-bootstrap";
 
 function ProfileCard() {
+  const navigate = useNavigate();
+
+  const toContact = () => {
+    navigate("/contact");
+  }
+
   return ( 
     <Container className="border-0 profile-card h-100">
       
@@ -46,6 +53,7 @@ function ProfileCard() {
                 </ListGroup.Item>
               </ListGroup>
               <Button
+                onClick={toContact}
                 type="button"
                 className="btn btn-primary btn-rounded my-2 bg-color"
               >

@@ -7,10 +7,12 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 function HomeFeatures() {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const getAllBlogs = () => {
@@ -24,6 +26,7 @@ function HomeFeatures() {
          const lastThreeImages = newestFirstImages.slice(0, 3);
 
         setBlogs(lastThreeImages);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error getting Blogs:", err);
@@ -46,35 +49,44 @@ function HomeFeatures() {
   return (
     <Container className="my-5">
         <h2 className="display-5 text-center customBoldText m-4 text-color2">Featured Blogs: Recently Added</h2>
-      <Row xs={1} md={3} className="g-4">
-      {blogs.map((blog) => (
-            <Col key={blog._id}>
-                <Card className='h-100 p-4'>
-                    <div className="image-container custom-pointer"
-                    onClick={() => postDetails(blog)}
-                    >
-                        <Card.Img className='card-img rounded' variant="top" src={blog.image} />
-                    </div>
+        {loading ? ( 
+          <div className='d-flex align-items-center justify-content-center' style={{ height: '50vh' }}>
+              <Spinner animation='border' className='text-color' />
+          </div>
+        ) : (
+          <>
+            <Row xs={1} md={3} className="g-4">
+              {blogs.map((blog) => (
+                    <Col key={blog._id}>
+                        <Card className='h-100 p-4'>
+                            <div className="image-container custom-pointer"
+                            onClick={() => postDetails(blog)}
+                            >
+                                <Card.Img className='card-img rounded' variant="top" src={blog.image} />
+                            </div>
 
-                    <Card.Body>
-                        <Card.Title>{blog.title}</Card.Title>
-                        <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
-                        <Card.Text className="text-secondary">{new Date(blog.createdAt).toLocaleDateString()}</Card.Text>
-                        <Card.Link className="custom-pointer" onClick={() => postDetails(blog)}>Learn More</Card.Link>
-                    </Card.Body>
-                </Card>
-            </Col>
-        ))}
-    </Row>
-   <br></br>
-    <div className="d-grid gap-2">
-      <Button
-        className='bg-color'
-        size="lg"
-        onClick={toAllPosts}
-      >View All Blog Posts
-      </Button>
-    </div>
+                            <Card.Body>
+                                <Card.Title>{blog.title}</Card.Title>
+                                <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
+                                <Card.Text className="text-secondary">{new Date(blog.createdAt).toLocaleDateString()}</Card.Text>
+                                <Card.Link className="custom-pointer" onClick={() => postDetails(blog)}>Learn More</Card.Link>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+          <br></br>
+            <div className="d-grid gap-2">
+              <Button
+                className='bg-color'
+                size="lg"
+                onClick={toAllPosts}
+              >View All Blog Posts
+              </Button>
+            </div>
+          </>
+        )}
+      
     
     </Container>
   );
