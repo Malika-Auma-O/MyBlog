@@ -16,6 +16,16 @@ function PortfolioModal(props) {
       alert('Website URL not available for the selected project');
     }
   };
+
+  const redirectGithub = () => {
+    // Check if the selected project has a github URL
+    if (selectedProject && selectedProject.github) {
+      // Open the github URL in a new tab
+      window.open(selectedProject.github, '_blank');
+    } else {
+      alert('github URL not available for the selected project');
+    }
+  };
  
 
   return (
@@ -28,7 +38,7 @@ function PortfolioModal(props) {
         centered
       >
         
-        <Carousel slide={false}>
+        <Carousel slide={false} >
           {selectedProject && selectedProject.images.map((image, index) => (
             <Carousel.Item key={index}>
               <Image
@@ -36,18 +46,15 @@ function PortfolioModal(props) {
                 alt={`Slide ${index + 1}`}
                 fluid
                 className=' custom-carousel-image'
+                style={{ maxHeight: '400px', width: 'auto' }}
               />
-              {/* <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption> */}
             </Carousel.Item>
           ))}
         </Carousel>
 
         <Modal.Header closeButton>
           <div>
-            <Modal.Title className='underline text-color' id="contained-modal-title-vcenter">
+            <Modal.Title className='underline text-color2 ' id="contained-modal-title-vcenter">
               {selectedProject && selectedProject.category}
             </Modal.Title>
            
@@ -55,15 +62,19 @@ function PortfolioModal(props) {
         </Modal.Header>
 
         <Modal.Body>
-          <h4 className='m-2'>{selectedProject && selectedProject.title}</h4>
+          <h1 className='m-2'>{selectedProject && selectedProject.title}</h1>
           <p dangerouslySetInnerHTML={{ __html: selectedProject && selectedProject.content }} />
-              <h5 className='text-color my-3'><span className='text-dark'>Technologies: </span>{selectedProject && selectedProject.technologies}</h5>
+              <h6 className='text-color2 my-3'><span className='text-dark fw-bold'>Technologies: <br/><br/></span>{selectedProject && selectedProject.technologies}</h6>
       
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button className='me-2' onClick={redirectToWebsite}>View the site</Button>
-          <Button onClick={onHide}>Close</Button>
+        <Modal.Footer >
+          {/* me auto adds space between div and close button */}
+          <div className='me-auto'>  
+            <Button className='me-2 bg-color' onClick={redirectGithub}>Go to github</Button>
+            <Button className='me-2 bg-color' onClick={redirectToWebsite}>View the site</Button>
+          </div>
+          <Button className=' bg-color'  onClick={onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>

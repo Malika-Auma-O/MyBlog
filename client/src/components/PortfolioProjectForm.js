@@ -18,11 +18,23 @@ function PortfolioProjectForm() {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [images, setImages] = useState([]);
+    const [website, setWebsite] = useState("");
+    const [github, setGithub] = useState("");
 
     const onChangeImage = (e) => {
         const files = e.target.files;
-        setImages(files);
+        const uniqueImages = [];
+    
+        for (const file of files) {
+            // Ensure each image has a unique filename
+            const uniqueFilename = `${file.name}_${Date.now()}`;
+            const uniqueFile = new File([file], uniqueFilename, { type: file.type });
+            uniqueImages.push(uniqueFile);
+        }
+    
+        setImages(uniqueImages);
     };
+    
     
 
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -39,6 +51,8 @@ function PortfolioProjectForm() {
         for (const image of images) {
             formData.append("images", image);
         }
+        formData.append("website", website);
+        formData.append("github", github);
     
         const headers = {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -60,6 +74,8 @@ function PortfolioProjectForm() {
         setContent("");
         setCategory("");
         setImages([]); // Clear the images array
+        setWebsite("");
+        setGithub("");
       };
 
     return (
@@ -102,12 +118,12 @@ function PortfolioProjectForm() {
                                     <option value=""></option>
                                     <option value="HTML">HTML</option>
                                     <option value="CSS">CSS</option>
-                                    <option value="Javascript">Javascript</option>
-                                    <option value="React">React</option>
-                                    <option value="Angular">Angular</option>
+                                    <option value="Javascript">JAVASCRIPT</option>
+                                    <option value="React">REACT</option>
+                                    <option value="Angular">ANGULAR</option>
                                     <option value="Node JS">Node JS</option>
-                                    <option value="WordPress">WordPress</option>
-                                    <option value="Others">Others</option>
+                                    <option value="WordPress">WORDPRESS</option>
+                                    <option value="Others">OTHERS</option>
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group controlId="formFileMultiple" className="mb-3">
@@ -116,6 +132,26 @@ function PortfolioProjectForm() {
                                     type="file"
                                     multiple
                                     onChange={onChangeImage}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicUrl">
+                                <Form.Label>Website</Form.Label>
+                                <Form.Control
+                                    className='p-2'
+                                    type="url"
+                                    placeholder="Website url"
+                                    value={website}
+                                    onChange={(e) => setWebsite(e.target.value)}
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicUrl2">
+                                <Form.Label>Project Github</Form.Label>
+                                <Form.Control
+                                    className='p-2'
+                                    type="url"
+                                    placeholder="Github url"
+                                    value={github}
+                                    onChange={(e) => setGithub(e.target.value)}
                                 />
                             </Form.Group>
                             <Button className='w-100 bg-color' variant="primary" type="submit">

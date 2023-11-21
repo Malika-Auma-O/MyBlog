@@ -27,6 +27,7 @@ const createProject = async (req, res) => {
         images: images,
         imagePublicIds: imagePublicIds,
         website: req.body.website,
+        github: req.body.github,
       };
 
       const newProject = await Project.create(project);
@@ -83,9 +84,13 @@ const updateProject = async (req, res) => {
 
       // Update the project details with the new data
       existingProject.title = req.body.title;
-      existingProject.author = req.body.author;
       existingProject.content = req.body.content;
       existingProject.category = req.body.category;
+      existingProject.technologies = req.body.technologies;
+      existingProject.images = req.body.images;
+      existingProject.website = req.body.website;
+      existingProject.github = req.body.github;
+      
 
       // if new images are uploaded, save the Cloudinary image URLs and public IDs to the project
       if (req.files) {

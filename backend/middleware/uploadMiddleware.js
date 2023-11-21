@@ -26,7 +26,7 @@ const projectImageStorage = new CloudinaryStorage({
   params: {
     folder: "project-images", 
     format: async (req, file) => "jpeg",
-    transformation: [{ width: 500, height: 500, crop: "limit" }],
+    transformation: [{ width: 798, height: 250, crop: "limit" }],
     public_id: (req, file) => `images-${Date.now()}`
   },
 });
