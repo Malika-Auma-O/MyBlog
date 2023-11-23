@@ -117,11 +117,10 @@ function PortfolioProjectForm() {
                                 >
                                     <option value=""></option>
                                     <option value="HTML">HTML</option>
-                                    <option value="CSS">CSS</option>
                                     <option value="Javascript">JAVASCRIPT</option>
                                     <option value="React">REACT</option>
                                     <option value="Angular">ANGULAR</option>
-                                    <option value="Node JS">Node JS</option>
+                                    <option value="Node JS">MERN STACK</option>
                                     <option value="WordPress">WORDPRESS</option>
                                     <option value="Others">OTHERS</option>
                                 </Form.Select>

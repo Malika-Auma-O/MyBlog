@@ -43,6 +43,15 @@ function Portfolio() {
     { name: "WordPress", percentage: 50 },
   ];
 
+  const projectCategories = [
+    { name: "HTML" },
+    { name: "Javascript" },
+    { name: "React" },
+    { name: "Angular"  },
+    { name: "MERN Stack" },
+    { name: "WordPress"},
+  ];
+
   useEffect(() => {
     const animationTimeout = setTimeout(() => {
       setAnimationComplete(true);
@@ -55,14 +64,18 @@ function Portfolio() {
     axios
       .get(`${apiUrl}/api/projects`,)
       .then((res) => {
-        setProjects(res.data.reverse());
-        setFilteredProjects(res.data.reverse());
+        // Sort projects by createdAt in descending order
+        const sortedProjects = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  
+        setProjects(sortedProjects);
+        setFilteredProjects(sortedProjects);
         setLoading(false);
       })
       .catch((err) => {
         console.error("Error getting Projects:", err);
       });
   };
+  
 
   useEffect(() => {
     getAllProjects();
@@ -142,14 +155,14 @@ function Portfolio() {
         <h5 className="text-center">Here is a selection of projects I have worked on. Click on thumbnails to view more information about each project.</h5>
         <Nav variant="pills" activeKey={activeKey} onSelect={handleSelect} className="m-5 justify-content-center">
           <Nav.Item>
-            <Nav.Link eventKey="1" href="#/home" className={activeKey === '1' ? 'active-tab' : 'inactive-tab'}>
+            <Nav.Link eventKey="1"  className={activeKey === '1' ? 'active-tab' : 'inactive-tab'}>
               ALL
             </Nav.Link>
           </Nav.Item>
-          {languages.map((language, index) => (
+          {projectCategories.map((projectCategory, index) => (
           <Nav.Item key={index}>
-            <Nav.Link eventKey={language.name} title={language.name} className={activeKey === language.name ? 'active-tab' : 'inactive-tab'}>
-              {language.name.toUpperCase()}
+            <Nav.Link eventKey={projectCategory.name} title={projectCategory.name} className={activeKey === projectCategory.name ? 'active-tab' : 'inactive-tab'}>
+              {projectCategory.name.toUpperCase()}
             </Nav.Link>
           </Nav.Item>
         ))}
