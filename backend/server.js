@@ -4,17 +4,20 @@ const app = express();
 require("./connection")
 require("dotenv").config();
 const port = process.env.PORT || 8080;
-hostName = "localhost";
+hostName = "0.0.0.0";
 const cors = require("cors");
 
 // add middleware
 app.use(express.json());
 
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000/";
+// when testing in development, change to "*"
+
 app.use(
-    cors({
-      origin: "*",
-    })
-  )
+  cors({
+    origin: FRONTEND_URL,
+  })
+)
 
   const userAuthRouter = require("./routers/userAuthRouter");
   const blogRouter = require("./routers/blogRouter");
