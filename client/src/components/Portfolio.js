@@ -96,6 +96,7 @@ function Portfolio() {
     { name: "npm", icon: "fa-brands fa-npm" },
     { name: "MongoDB", icon: "fa-brands fa-envira", rotation: 90 },
     { name: "REST API", icon: "fa-solid fa-gear" },
+    { name: "Firebase", icon: "fa-solid fa-folder-open" },
   ];
 
   const filterProjects = (category) => {
@@ -152,7 +153,7 @@ function Portfolio() {
         </Container>
         <br /><hr /><br />
         <h2 className="text-center mt-3 text-color2">My Projects</h2>
-        <h5 className="text-center">Here is a selection of projects I have worked on. Click on thumbnails to view more information about each project.</h5>
+        <h5 className="text-center">Here is a selection of projects I have worked on, ranging from early, foundational ones created when I started coding to more recent and refined projects showcasing significant improvement in my skills and capabilities. Click on thumbnails to view more information about each project.</h5>
         <Nav variant="pills" activeKey={activeKey} onSelect={handleSelect} className="m-5 justify-content-center">
           <Nav.Item>
             <Nav.Link eventKey="1"  className={activeKey === '1' ? 'active-tab' : 'inactive-tab'}>
