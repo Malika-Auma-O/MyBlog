@@ -61,13 +61,13 @@ const PostDetails = () => {
                 <br></br>
 
                 <div >
-                    <Card className='d-flex flex-row align-items-center border-0'>
-                            <Image
+                    <Card className='d-flex flex-row align-items-center border-0 mb-4'>
+                            {/* <Image
                             src="https://img.freepik.com/free-photo/painting-woman-with-oranges-her-hair_1340-28007.jpg" 
                         
                             className="rounded-circle img-thumbnail profile-image small-avatar"
                             alt="profile-image"    
-                            />
+                            /> */}
                             <div className='mx-2' >
                                 <Card.Title className='text-color' ><h6>{selectedBlog.author}</h6></Card.Title>
                                 <Card.Title className='text-secondary'><h6>{new Date(selectedBlog.createdAt).toLocaleDateString()}</h6></Card.Title>
@@ -75,10 +75,11 @@ const PostDetails = () => {
                     </Card>
                 </div>
                 <hr/>
-                <Card.Text>
+                <Card.Text className='my-4'>
                   <div dangerouslySetInnerHTML={{ __html: selectedBlog.content }} />
                 </Card.Text>
-                <div >
+                <hr/>
+                <div className='my-4'>
                     <Button className='m-1 bg-color' >Angular</Button>{' '}
                     <Button className='m-1 bg-color' >Development</Button>{' '}
                     <Button className='m-1 bg-color' >HTML</Button>{' '}
@@ -96,12 +97,12 @@ const PostDetails = () => {
                     <Card.Header className='text-color'><h3>Author</h3></Card.Header>
 
                     <Card className='d-flex flex-row align-items-center border-0 m-2'>
-                            <Image
+                            {/* <Image
                             src="https://img.freepik.com/free-photo/painting-woman-with-oranges-her-hair_1340-28007.jpg" 
                         
                             className="rounded-circle img-thumbnail profile-image "
                             alt="profile-image"    
-                            />
+                            /> */}
                             <div className='mx-2' >
                                 <Card.Title className='text-color' ><h6>{selectedBlog.author}</h6></Card.Title>
                                 <Card.Title className='text-secondary'><h6>{new Date(selectedBlog.createdAt).toLocaleDateString()}</h6></Card.Title>

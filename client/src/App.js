@@ -18,6 +18,8 @@ import PortfolioProjectForm from "./components/PortfolioProjectForm";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PostForm from "./components/PostForm";
+import PostUpdateForm from "./components/PostUpdateForm";
+import PostByID from "./components/PostByID";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
             <Route path="/about" element={<About />}/>
             <Route path="/contact" element={<Contact />}/>
             <Route path="/posts" element={<Posts />}/>
+            <Route path="/user/posts" element={<PostByID />}/>
             <Route path="/blog-form" element={<PostForm />}/>
+            <Route path="/update-post/:id" element={<PostUpdateForm/>}/>
             <Route path="/post" element={<PostDetails />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
             <Route path="/project-form" element={<PortfolioProjectForm />}/>

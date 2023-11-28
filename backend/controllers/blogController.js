@@ -58,6 +58,21 @@ const getAllUserBlogs = async (req, res) => {
   }
 }
 
+const getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (!blog) {
+      return res.status(404).send({ msg: "Blog not found" });
+    }
+
+    res.status(200).send(blog);
+  } catch (error) {
+    console.error("Error fetching blog by ID:", error);
+    res.status(500).send({ error: "Unable to fetch blog" });
+  }
+};
+
 const updateBlog = async (req, res) => {
   try {
     // Set the user ID from the authentication token
@@ -127,6 +142,7 @@ module.exports = {
     createBlog,
     getAllBlogs,
     getAllUserBlogs,
+    getBlogById,
     updateBlog,
     deleteBlog 
   };
