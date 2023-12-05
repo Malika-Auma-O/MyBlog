@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import Footer from './Footer';
 
 function PostByID() {
     const navigate = useNavigate();
@@ -80,7 +81,7 @@ function PostByID() {
           <>
             <Row xs={1} md={3} className="g-4">
               {blogs.map((blog) => (
-                    <Col key={blog._id}>
+                    <Col key={blog._id} className='mb-2'>
                         <Card className='h-100 p-4'>
                             <div className="image-container custom-pointer"
                             onClick={() => postDetails(blog)}
@@ -112,6 +113,7 @@ function PostByID() {
               >View All Blog Posts
               </Button>
             </div>
+            <Footer/>
           </>
         )}
       
