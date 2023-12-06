@@ -64,9 +64,13 @@ function NavbarPage() {
           </Navbar.Text>
             {token ? 
             (
-              <Nav.Link 
-              onClick={handleLogout}
-               className='text-color'>Logout</Nav.Link>
+              <Nav>
+                <Nav.Link as={Link} to="/user/posts" className={`text-color ${location.pathname === '/user/posts' ? 'text-primary' : ''}`}>My Posts </Nav.Link>
+                <Nav.Link 
+                onClick={handleLogout}
+                className='text-color'>Logout</Nav.Link>
+              </Nav>
+              
             ) : (
               <>
               <NavDropdown className='text-color' title="Account" id="navbarScrollingDropdown">
