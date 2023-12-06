@@ -67,7 +67,7 @@ function Posts() {
 
                             <Card.Body>
                                 <Card.Title>{blog.title}</Card.Title>
-                                <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
+                                <Card.Text>Author: <span className="text-secondary">{blog.author} </span></Card.Text>
                                 {/* <Card.Text>
                                     <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                                 </Card.Text> */}

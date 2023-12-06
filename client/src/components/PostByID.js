@@ -91,7 +91,7 @@ function PostByID() {
 
                             <Card.Body>
                                 <Card.Title>{blog.title}</Card.Title>
-                                <Card.Text>Author: <span className="text-secondary">{blog.author} <span className="ms-3">Site Owner</span></span></Card.Text>
+                                <Card.Text>Author: <span className="text-secondary">{blog.author} </span></Card.Text>
                                 <Card.Text className="text-secondary">{new Date(blog.createdAt).toLocaleDateString()}</Card.Text>
                                 <Card.Link className="custom-pointer" onClick={() => postDetails(blog)}>Learn More</Card.Link>
                                 <div className='mt-2 d-flex justify-content-between'>
