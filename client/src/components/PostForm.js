@@ -45,7 +45,7 @@ function PostForm() {
           .post(`${apiUrl}/api/blog`, formData, { headers })
           .then((res) => {
             alert("Image added successfully!");
-            navigate("/posts");
+            navigate("/user/posts");
           })
           .catch((err) => {
             console.error("Error adding image:", err);
